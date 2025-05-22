@@ -432,7 +432,7 @@ export default function Header() {
                 <div>
                   {/* Services List - Now First */}
                   <div className="px-6 py-4 border-b border-gray-100">
-                    <p className="text-sm font-semibold text-gray-600 mb-3">Our Services:</p>
+                    <p className="text-sm font-semibold text-gray-600 mb-3">Our Servicess:</p>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                       {services.map((service) => (
                         <div 
