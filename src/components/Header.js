@@ -323,7 +323,7 @@ export default function Header() {
   return (
     <header 
       ref={headerRef}
-      className={`fixed w-full py-2 md:py-3 px-4 md:px-8 z-50 transition-all duration-300 ${
+      className={`fixed w-full py-2 md:py-3 px-4 md:px-8 transition-all duration-300 ${
         scrolled 
           ? 'bg-white shadow-lg' 
           : 'bg-white'
@@ -335,18 +335,19 @@ export default function Header() {
       style={{
         '--header-opacity': 1,
         boxShadow: scrolled ? '0 4px 20px rgba(0, 0, 0, 0.1)' : 'none',
+        zIndex: 50,
       }}
     >
       <div className="flex justify-between items-center w-full">
         {/* Enhanced Logo with Gradient and Subtle Animation */}
         <Link href="/" className="flex items-center space-x-2 group">
-          <div className="h-8 w-8 relative bg-gradient-to-br from-purple-500 to-purple-700 rounded-lg flex items-center justify-center overflow-hidden shadow-md transition-all duration-300 group-hover:shadow-purple-200">
+          <div className="h-7 w-7 sm:h-8 sm:w-8 relative bg-gradient-to-br from-purple-500 to-purple-700 rounded-lg flex items-center justify-center overflow-hidden shadow-md transition-all duration-300 group-hover:shadow-purple-200">
             <div className="absolute inset-0 bg-purple-600 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
-            <span className="text-white font-bold text-lg relative z-10 transform group-hover:scale-110 transition-transform duration-300">A</span>
+            <span className="text-white font-bold text-base sm:text-lg relative z-10 transform group-hover:scale-110 transition-transform duration-300">A</span>
           </div>
           <div>
-            <h1 className="text-lg font-bold text-gray-800 leading-tight group-hover:text-purple-600 transition-colors duration-300">ALHAMD</h1>
-            <p className="text-xs font-medium text-gray-600 -mt-1 tracking-wider opacity-90">TECHNOLOGIES</p>
+            <h1 className="text-base sm:text-lg font-bold text-gray-800 leading-tight group-hover:text-purple-600 transition-colors duration-300">ALHAMD</h1>
+            <p className="text-[10px] sm:text-xs font-medium text-gray-600 -mt-1 tracking-wider opacity-90">TECHNOLOGIES</p>
           </div>
         </Link>
         
@@ -431,17 +432,17 @@ export default function Header() {
       {/* Enhanced Search Popup with Results */}
       {isSearchOpen && (
         <div 
-          className="fixed inset-0 z-[9999] flex items-start justify-center pt-20 px-4 search-popup-overlay pointer-events-auto opacity-0 transition-opacity duration-200"
+          className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-start justify-center pt-16 sm:pt-20 px-3 sm:px-4 search-popup-overlay pointer-events-auto opacity-0 transition-opacity duration-200"
           onClick={(e) => e.target === e.currentTarget && setIsSearchOpen(false)}
-          style={{ transitionDelay: '50ms' }}
+          style={{ transitionDelay: '50ms', zIndex: 100 }}
         >
           <div 
             ref={searchContainerRef}
-            className="w-full max-w-2xl bg-white rounded-xl shadow-xl overflow-hidden border border-gray-200 transition-all duration-300 animate-fadeIn z-[10000] search-popup-content"
-            style={{ filter: 'blur(0)', transform: 'translateY(0)' }}
+            className="w-full max-w-2xl bg-white rounded-xl shadow-xl overflow-hidden border border-gray-200 transition-all duration-300 animate-fadeIn search-popup-content"
+            style={{ filter: 'blur(0)', transform: 'translateY(0)', zIndex: 101 }}
           >
             <form onSubmit={handleSearchSubmit} className="relative">
-              <div className="absolute left-6 top-1/2 transform -translate-y-1/2 text-purple-500">
+              <div className="absolute left-4 sm:left-6 top-1/2 transform -translate-y-1/2 text-purple-500">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
@@ -450,13 +451,13 @@ export default function Header() {
                 ref={searchInputRef}
                 type="text"
                 placeholder="Search pages, services..."
-                className="w-full bg-transparent pl-14 pr-12 py-4 text-gray-800 focus:outline-none text-lg border-b border-gray-200"
+                className="w-full bg-transparent pl-12 sm:pl-14 pr-12 py-3 sm:py-4 text-gray-800 focus:outline-none text-base sm:text-lg border-b border-gray-200"
                 value={searchQuery}
                 onChange={handleSearchChange}
               />
               <button 
                 type="submit"
-                className="absolute right-4 top-1/2 transform -translate-y-1/2 px-3 py-1.5 text-sm bg-purple-600 text-white rounded-md hover:bg-purple-700 transition-colors duration-200"
+                className="absolute right-3 sm:right-4 top-1/2 transform -translate-y-1/2 px-2 sm:px-3 py-1 sm:py-1.5 text-xs sm:text-sm bg-purple-600 text-white rounded-md hover:bg-purple-700 transition-colors duration-200"
                 aria-label="Submit search"
               >
                 Search
@@ -466,7 +467,7 @@ export default function Header() {
             <div className="max-h-[60vh] overflow-y-auto">
               {/* Search Results */}
               {searchQuery.trim() !== '' && (
-                <div className="px-6 py-4">
+                <div className="px-4 sm:px-6 py-4">
                   {/* Services Results - Now First */}
                   {searchResults.services.length > 0 && (
                     <div className="mb-6">
@@ -518,7 +519,7 @@ export default function Header() {
               {searchQuery.trim() === '' && (
                 <div>
                   {/* Services List - Now First */}
-                  <div className="px-6 py-4 border-b border-gray-100">
+                  <div className="px-4 sm:px-6 py-4 border-b border-gray-100">
                     <p className="text-sm font-semibold text-gray-600 mb-3">Our Services:</p>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                       {services.map((service) => (
@@ -535,7 +536,7 @@ export default function Header() {
                   </div>
                   
                   {/* Popular Searches - Now Second */}
-                  <div className="px-6 py-4">
+                  <div className="px-4 sm:px-6 py-4">
                     <p className="text-sm font-semibold text-gray-600 mb-2">Popular searches:</p>
                     <div className="flex flex-wrap gap-2">
                       {['Milling Work', 'CNC Work', 'Lathe Work', 'Marine Ship Parts', 'Fabrication', 'Oil and Gas', 'Wire Cut', 'Laser Cutting', 'Contact'].map((term) => (

@@ -45,6 +45,16 @@ body {
   animation: slideUp 0.4s ease-out forwards;
 }
 
+/* Animation for mobile menu */
+@keyframes slideInRight {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.3s ease-out forwards;
+}
+
 /* Ensure search popup is never blurred */
 .search-popup-overlay,
 .search-popup-content {
