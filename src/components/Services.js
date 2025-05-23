@@ -123,18 +123,18 @@ const ServiceModal = ({ service, isOpen, onClose }) => {
   }, [onClose]);
   
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm" onClick={onClose}>
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/50 backdrop-blur-sm" onClick={onClose}>
       <div 
         className="bg-white dark:bg-gray-900 rounded-xl shadow-2xl w-full max-w-6xl overflow-hidden animate-modal"
         onClick={e => e.stopPropagation()}
       >
-          <div className="absolute top-4 right-4 z-10">
+          <div className="absolute top-2 sm:top-4 right-2 sm:right-4 z-10">
             <button 
               onClick={onClose}
-              className="p-2 rounded-full bg-white/80 dark:bg-gray-800/80 hover:bg-white dark:hover:bg-gray-800 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors shadow-md"
+              className="p-1.5 sm:p-2 rounded-full bg-white/80 dark:bg-gray-800/80 hover:bg-white dark:hover:bg-gray-800 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors shadow-md"
               aria-label="Close modal"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
@@ -142,9 +142,9 @@ const ServiceModal = ({ service, isOpen, onClose }) => {
           
         <div className="flex flex-col lg:flex-row">
           {/* Left side - Image */}
-          <div className="lg:w-2/5 h-64 lg:h-auto relative bg-gradient-to-r from-purple-600 to-violet-600">
+          <div className="lg:w-2/5 h-48 sm:h-64 lg:h-auto relative bg-gradient-to-r from-purple-600 to-violet-600">
             <div className="absolute inset-0 flex items-center justify-center">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-24 w-24 text-white/80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-16 sm:h-24 w-16 sm:w-24 text-white/80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={service.icon} />
               </svg>
             </div>
@@ -159,23 +159,23 @@ const ServiceModal = ({ service, isOpen, onClose }) => {
             </div>
             
             {/* Add service summary card */}
-            <div className="absolute bottom-0 left-0 right-0 bg-black/50 backdrop-blur-sm p-4 text-white">
-              <h4 className="font-bold mb-1 text-sm md:text-base">Why Choose Our {service.title}</h4>
-              <ul className="text-xs md:text-sm space-y-1">
+            <div className="absolute bottom-0 left-0 right-0 bg-black/50 backdrop-blur-sm p-2 sm:p-4 text-white hidden sm:block">
+              <h4 className="font-bold mb-0.5 sm:mb-1 text-xs sm:text-sm md:text-base">Why Choose Our {service.title}</h4>
+              <ul className="text-[10px] sm:text-xs md:text-sm space-y-0.5 sm:space-y-1">
                 <li className="flex items-center">
-                  <svg className="w-4 h-4 mr-1 text-purple-300" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-3 h-3 sm:w-4 sm:h-4 mr-1 text-purple-300" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
                   </svg>
                   Premium Quality Materials
                 </li>
                 <li className="flex items-center">
-                  <svg className="w-4 h-4 mr-1 text-purple-300" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-3 h-3 sm:w-4 sm:h-4 mr-1 text-purple-300" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
                   </svg>
                   Industry-Leading Precision
                 </li>
                 <li className="flex items-center">
-                  <svg className="w-4 h-4 mr-1 text-purple-300" fill="currentColor" viewBox="0 0 20 20">
+                  <svg className="w-3 h-3 sm:w-4 sm:h-4 mr-1 text-purple-300" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
                   </svg>
                   Long-Term Reliability
@@ -185,85 +185,85 @@ const ServiceModal = ({ service, isOpen, onClose }) => {
           </div>
         
           {/* Right side - Content */}
-          <div className="p-8 lg:p-10 lg:w-3/5">
-            <div className="mb-6">
+          <div className="p-4 sm:p-6 lg:p-8 lg:w-3/5">
+            <div className="mb-4 sm:mb-6">
               <div className="flex items-center mb-2">
-                <span className="px-3 py-1 bg-purple-100 dark:bg-purple-900/40 text-purple-700 dark:text-purple-300 text-xs font-semibold tracking-wider rounded-full mr-3">
+                <span className="px-2 sm:px-3 py-0.5 sm:py-1 bg-purple-100 dark:bg-purple-900/40 text-purple-700 dark:text-purple-300 text-[10px] sm:text-xs font-semibold tracking-wider rounded-full mr-2 sm:mr-3">
                   PREMIUM SERVICE
                 </span>
                 <div className="h-px bg-gray-200 dark:bg-gray-700 flex-grow"></div>
               </div>
-              <h3 className="text-2xl md:text-3xl font-bold text-gray-800 dark:text-white mb-2">{service.title}</h3>
-              <div className="w-16 h-1 bg-purple-600 mb-4"></div>
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-800 dark:text-white mb-1 sm:mb-2">{service.title}</h3>
+              <div className="w-12 sm:w-16 h-0.5 sm:h-1 bg-purple-600 mb-3 sm:mb-4"></div>
             </div>
             
-            <div className="prose prose-purple dark:prose-invert mb-6">
-              <p className="text-gray-600 dark:text-gray-300 text-sm md:text-lg mb-4">{service.description}</p>
+            <div className="prose prose-purple dark:prose-invert mb-4 sm:mb-6">
+              <p className="text-gray-600 dark:text-gray-300 text-xs sm:text-sm md:text-base mb-3 sm:mb-4">{service.description}</p>
             
-              <p className="text-gray-600 dark:text-gray-300 text-sm md:text-lg mb-6">
+              <p className="text-gray-600 dark:text-gray-300 text-xs sm:text-sm md:text-base mb-4 sm:mb-6">
                 Our team of experts uses state-of-the-art equipment and follows industry best practices to deliver exceptional results. 
                 We pride ourselves on precision, reliability, and meeting tight deadlines for all our {service.title.toLowerCase()} projects.
               </p>
             </div>
             
             {/* Features and Benefits */}
-            <div className="bg-purple-50 dark:bg-purple-900/20 p-5 rounded-lg mb-6">
-              <h4 className="font-bold text-gray-800 dark:text-white mb-3 flex items-center text-sm md:text-base">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-purple-600 dark:text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <div className="bg-purple-50 dark:bg-purple-900/20 p-3 sm:p-5 rounded-lg mb-4 sm:mb-6">
+              <h4 className="font-bold text-gray-800 dark:text-white mb-2 sm:mb-3 flex items-center text-xs sm:text-sm md:text-base">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 sm:h-5 sm:w-5 mr-1 sm:mr-2 text-purple-600 dark:text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                 </svg>
                 Service Benefits
               </h4>
-              <div className="grid grid-cols-1 gap-3">
+              <div className="grid grid-cols-1 gap-2 sm:gap-3">
                 <div className="flex items-start">
-                  <svg className="w-5 h-5 mr-2 text-purple-600 dark:text-purple-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5 mr-1.5 sm:mr-2 text-purple-600 dark:text-purple-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                   </svg>
-                  <span className="dark:text-gray-300 text-xs md:text-sm">Custom-tailored to your specific requirements</span>
+                  <span className="dark:text-gray-300 text-[10px] sm:text-xs md:text-sm">Custom-tailored to your specific requirements</span>
                 </div>
                 <div className="flex items-start">
-                  <svg className="w-5 h-5 mr-2 text-purple-600 dark:text-purple-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5 mr-1.5 sm:mr-2 text-purple-600 dark:text-purple-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                   </svg>
-                  <span className="dark:text-gray-300 text-xs md:text-sm">Highly durable components that last longer</span>
+                  <span className="dark:text-gray-300 text-[10px] sm:text-xs md:text-sm">Highly durable components that last longer</span>
                 </div>
                 <div className="flex items-start">
-                  <svg className="w-5 h-5 mr-2 text-purple-600 dark:text-purple-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5 mr-1.5 sm:mr-2 text-purple-600 dark:text-purple-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                   </svg>
-                  <span className="dark:text-gray-300 text-xs md:text-sm">Optimized for maximum performance</span>
+                  <span className="dark:text-gray-300 text-[10px] sm:text-xs md:text-sm">Optimized for maximum performance</span>
                 </div>
                 <div className="flex items-start">
-                  <svg className="w-5 h-5 mr-2 text-purple-600 dark:text-purple-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5 mr-1.5 sm:mr-2 text-purple-600 dark:text-purple-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                   </svg>
-                  <span className="dark:text-gray-300 text-xs md:text-sm">Cost-effective solutions with superior quality</span>
+                  <span className="dark:text-gray-300 text-[10px] sm:text-xs md:text-sm">Cost-effective solutions with superior quality</span>
                 </div>
               </div>
             </div>
             
             {/* Contact CTA */}
-            <div className="border-t border-gray-100 dark:border-gray-800 pt-6">
-              <div className="flex flex-wrap items-center gap-3">
+            <div className="border-t border-gray-100 dark:border-gray-800 pt-4 sm:pt-6">
+              <div className="flex flex-wrap items-center gap-2 sm:gap-3">
                 <a 
                   href="#contact"
-                  className="px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-lg transition-colors inline-flex items-center whitespace-nowrap"
+                  className="px-4 sm:px-6 py-2 sm:py-3 bg-purple-600 hover:bg-purple-700 text-white text-xs sm:text-sm font-medium rounded-lg transition-colors inline-flex items-center whitespace-nowrap"
                 >
                   Get a Quote
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 sm:h-5 sm:w-5 ml-1 sm:ml-2" viewBox="0 0 20 20" fill="currentColor">
                     <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
                   </svg>
                 </a>
                 
                 {/* Contact icons */}
-                <a href="tel:+1234567890" className="flex items-center gap-2 px-4 py-3 rounded-lg border border-purple-200 dark:border-purple-800 hover:bg-purple-50 dark:hover:bg-purple-900/30 transition-colors text-purple-700 dark:text-purple-300">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                <a href="tel:+1234567890" className="flex items-center gap-1 sm:gap-2 px-3 sm:px-4 py-2 sm:py-3 rounded-lg border border-purple-200 dark:border-purple-800 hover:bg-purple-50 dark:hover:bg-purple-900/30 transition-colors text-purple-700 dark:text-purple-300 text-xs sm:text-sm">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 sm:h-5 sm:w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 8V5z" />
                   </svg>
                   <span>Call Us</span>
                 </a>
-                <a href="mailto:info@company.com" className="flex items-center gap-2 px-4 py-3 rounded-lg border border-purple-200 dark:border-purple-800 hover:bg-purple-50 dark:hover:bg-purple-900/30 transition-colors text-purple-700 dark:text-purple-300">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                <a href="mailto:info@company.com" className="flex items-center gap-1 sm:gap-2 px-3 sm:px-4 py-2 sm:py-3 rounded-lg border border-purple-200 dark:border-purple-800 hover:bg-purple-50 dark:hover:bg-purple-900/30 transition-colors text-purple-700 dark:text-purple-300 text-xs sm:text-sm">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 sm:h-5 sm:w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
                   <span>Email Us</span>
@@ -403,7 +403,7 @@ export default function Services() {
                     <h3 className="font-bold text-gray-800 mb-1 text-sm md:text-base">Trusted Industry Partner</h3>
                     <p className="text-gray-600 text-xs md:text-sm">
                       Our commitment to excellence has made us a trusted partner for businesses in <span className="text-purple-700 font-semibold">petroleum, manufacturing, marine, and food processing</span> industries.
-                </p>
+                    </p>
                   </div>
                 </div>
               </div>
@@ -461,35 +461,32 @@ export default function Services() {
               >
                 {/* Card with hover effects */}
                 <div 
-                  className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 h-full flex flex-col border border-purple-50 group-hover:border-purple-200"
+                  className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 h-full flex flex-col border border-purple-50 group-hover:border-purple-200 cursor-pointer"
                   onClick={() => handleServiceClick(service)}
                 >
                   {/* Top accent bar */}
                   <div className="h-2 bg-gradient-to-r from-purple-500 to-violet-500"></div>
                   
-                  {/* Icon */}
-                  <div className="p-3 sm:p-4 md:p-6 pt-5">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-lg bg-purple-100 flex items-center justify-center mb-3 sm:mb-4 md:mb-5 group-hover:bg-purple-200 transition-all duration-300">
+                  {/* Card content wrapper */}
+                  <div className="p-5 flex flex-col h-full">
+                    {/* Icon */}
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-lg bg-purple-100 flex items-center justify-center mb-4 group-hover:bg-purple-200 transition-all duration-300">
                       <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                         <path strokeLinecap="round" strokeLinejoin="round" d={service.icon} />
                       </svg>
                     </div>
                     
                     {/* Content */}
-                    <h3 className="text-base sm:text-lg md:text-xl font-bold mb-2 sm:mb-3 text-gray-800 group-hover:text-purple-700 transition-colors duration-300">{service.title}</h3>
-                    <p className="text-gray-600 text-xs md:text-sm leading-relaxed mb-4 sm:mb-6">{service.description.substring(0, 120)}...</p>
-                    
-                    {/* Bottom action */}
-                    <div className="mt-auto pt-3 sm:pt-4 border-t border-gray-100">
-                      <button 
-                        className="text-purple-600 text-sm font-medium flex items-center group-hover:translate-x-1 transition-transform duration-300"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          handleServiceClick(service);
-                        }}
-                      >
-                        Learn more
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <h3 className="text-base sm:text-lg md:text-xl font-bold mb-2 sm:mb-3 text-gray-800 group-hover:text-purple-700 transition-colors duration-300">
+                      {service.title}
+                    </h3>
+                    <p className="text-gray-600 text-xs md:text-sm mb-4 flex-grow">
+                      {service.description}
+                    </p>
+                    <div className="flex justify-end mt-auto">
+                      <button className="text-purple-600 text-xs sm:text-sm font-medium flex items-center group-hover:translate-x-1 transition-transform duration-300">
+                        View details
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 sm:h-4 sm:w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                         </svg>
                       </button>
@@ -535,17 +532,17 @@ export default function Services() {
                     </div>
                     
                     {/* Right side - Content */}
-                    <div className="md:w-2/3 p-6 flex flex-col">
-                      <h3 className="text-lg md:text-xl font-bold mb-3 text-gray-800 group-hover:text-purple-700 transition-colors duration-300">
+                    <div className="md:w-2/3 p-3 sm:p-4 md:p-6 flex flex-col">
+                      <h3 className="text-base sm:text-lg md:text-xl font-bold mb-2 sm:mb-3 text-gray-800 group-hover:text-purple-700 transition-colors duration-300">
                         {service.title}
                       </h3>
-                      <p className="text-gray-600 text-xs md:text-sm mb-4 flex-grow">
+                      <p className="text-gray-600 text-xs md:text-sm mb-3 sm:mb-4 flex-grow">
                         {service.description}
                       </p>
                       <div className="flex justify-end">
-                        <button className="text-purple-600 text-sm font-medium flex items-center group-hover:translate-x-1 transition-transform duration-300">
+                        <button className="text-purple-600 text-xs sm:text-sm font-medium flex items-center group-hover:translate-x-1 transition-transform duration-300">
                           View details
-                          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 sm:h-4 sm:w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                           </svg>
                         </button>

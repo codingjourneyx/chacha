@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 
 export default function Testimonials() {
   return (
-    <section id="testimonials" className="flex items-center bg-gradient-to-br from-purple-700 to-purple-900 text-white py-12 md:py-16">
-      <div className="container mx-auto px-4 md:px-8 py-6 w-full">
+    <section id="testimonials" className="flex items-center bg-gradient-to-br from-purple-700 to-purple-900 text-white h-screen">
+      <div className="container mx-auto px-4 md:px-8 py-4 md:py-6 w-full">
         <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
           <div className="md:max-w-2xl">
             <div className="inline-block px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm font-medium tracking-wide mb-3">
@@ -16,14 +16,14 @@ export default function Testimonials() {
               Don't just take our word for it. Here's what some of our valued clients have to say about our precision machining services.
             </p>
           </div>
-          <div className="mt-6 md:mt-0">
-            <a href="#contact" className="inline-block px-6 py-3 bg-white text-purple-800 font-medium rounded-lg hover:bg-purple-100 transition-all duration-300 shadow-lg">
+          <div className="mt-6 md:mt-0 w-full md:w-auto">
+            <a href="#contact" className="w-full md:w-auto inline-block px-6 py-3 bg-white text-purple-800 font-medium rounded-lg hover:bg-purple-100 transition-all duration-300 shadow-lg text-center">
               Work With Us
             </a>
           </div>
         </div>
         
-        <div className="h-[450px] pb-2">
+        <div className="h-[400px] md:h-[420px] pb-2">
           <TestimonialSlider />
         </div>
       </div>
@@ -79,10 +79,29 @@ function TestimonialSlider() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
   
+  // Calculate visible slides based on screen size
+  const [visibleSlides, setVisibleSlides] = useState(1);
+  
+  useEffect(() => {
+    const handleResize = () => {
+      // Set visible slides based on screen width
+      setVisibleSlides(window.innerWidth >= 768 ? 3 : 1);
+    };
+    
+    // Initial setup
+    handleResize();
+    
+    // Add resize listener
+    window.addEventListener('resize', handleResize);
+    
+    // Cleanup
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+  
   const nextSlide = () => {
     if (!isAnimating) {
       setIsAnimating(true);
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % (testimonials.length - 2));
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % (testimonials.length - (visibleSlides - 1)));
       setTimeout(() => setIsAnimating(false), 500);
     }
   };
@@ -90,7 +109,10 @@ function TestimonialSlider() {
   const prevSlide = () => {
     if (!isAnimating) {
       setIsAnimating(true);
-      setCurrentIndex((prevIndex) => (prevIndex - 1 + (testimonials.length - 2)) % (testimonials.length - 2));
+      setCurrentIndex((prevIndex) => 
+        (prevIndex - 1 + (testimonials.length - (visibleSlides - 1))) % 
+        (testimonials.length - (visibleSlides - 1))
+      );
       setTimeout(() => setIsAnimating(false), 500);
     }
   };
@@ -102,10 +124,10 @@ function TestimonialSlider() {
     }, 5000);
     
     return () => clearInterval(interval);
-  }, []);
+  }, [visibleSlides]);
 
   return (
-    <div className="bg-transparent p-6 rounded-3xl shadow-2xl text-white relative overflow-hidden h-full backdrop-blur-sm border border-white/10">
+    <div className="bg-transparent p-2 md:p-4 rounded-3xl shadow-2xl text-white relative overflow-hidden h-full backdrop-blur-sm border border-white/10">
       {/* Decorative elements */}
       <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-purple-500 opacity-20 blur-xl"></div>
       <div className="absolute -bottom-32 -left-32 w-96 h-96 rounded-full bg-violet-400 opacity-20 blur-xl"></div>
@@ -116,16 +138,16 @@ function TestimonialSlider() {
         <div className="relative z-10 overflow-hidden flex-grow">
           <div 
             className="transition-all duration-500 ease-in-out w-full h-full flex items-center"
-            style={{ transform: `translateX(-${currentIndex * 33.333}%)` }}
+            style={{ transform: `translateX(-${currentIndex * (100 / visibleSlides)}%)` }}
           >
-            {/* Testimonial slides - showing 3 at once */}
+            {/* Testimonial slides - responsive */}
             <div className="flex w-full">
               {testimonials.map((testimonial) => (
                 <div 
                   key={testimonial.id} 
-                  className="w-1/3 px-3 flex-shrink-0"
+                  className={`${visibleSlides === 1 ? 'w-full' : 'w-1/3'} px-2 flex-shrink-0`}
                 >
-                  <div className="bg-white/10 backdrop-blur-md p-5 rounded-2xl h-full flex flex-col hover:bg-white/15 hover:scale-105 transition-all duration-500 shadow-xl border border-white/10">
+                  <div className="bg-white/10 backdrop-blur-md p-3 md:p-5 rounded-2xl h-full flex flex-col hover:bg-white/15 hover:scale-105 transition-all duration-500 shadow-xl border border-white/10">
                     <div className="mb-4">
                       <blockquote className="text-lg italic mb-6 flex-grow leading-relaxed font-light">
                         "{testimonial.quote}"
@@ -184,7 +206,7 @@ function TestimonialSlider() {
         
         {/* Navigation dots */}
         <div className="flex justify-center mt-2 space-x-2 pb-1">
-          {Array.from({ length: testimonials.length - 2 }).map((_, index) => (
+          {Array.from({ length: testimonials.length - (visibleSlides - 1) }).map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrentIndex(index)}

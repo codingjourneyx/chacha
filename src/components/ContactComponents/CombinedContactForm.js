@@ -70,12 +70,18 @@ export default function CombinedContactForm() {
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 h-full">
       {/* Contact Form - Takes 2/3 of the space */}
       <div className="lg:col-span-2 flex flex-col h-full">
-        <h3 className="text-xl font-bold text-gray-700 mb-3">Get In Touch</h3>
         <form onSubmit={handleSubmit} className="flex flex-col flex-grow bg-white rounded-xl shadow-lg overflow-hidden">
           {/* Header Section */}
           <div className="bg-white overflow-hidden border-b border-gray-200">
             <div className="p-4">
-              <h2 className="text-xl font-bold text-gray-700">Contact information</h2>
+              <div className="flex items-center">
+                <div className="inline-flex items-center justify-center w-10 h-10 bg-purple-600 rounded-lg shadow-md">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
+                  </svg>
+                </div>
+                <h2 className="text-xl font-bold text-gray-700 ml-3 bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-purple-800">Contact information</h2>
+              </div>
             </div>
           </div>
 

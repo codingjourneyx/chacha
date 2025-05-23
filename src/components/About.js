@@ -141,11 +141,38 @@ export default function About() {
   };
 
   return (
-    <section id="about" className="py-24 bg-white">
+    <section id="about" className="py-18 bg-white">
       <div className="container mx-auto px-4 md:px-8">
         <div className="flex flex-col md:flex-row items-center">
-          {/* Left Content - 50% */}
-          <div className="w-full md:w-1/2 md:pr-12 mb-12 md:mb-0">
+          {/* Right Image - 50% - Moved to top on mobile */}
+          <div className="w-full md:w-1/2 relative order-first md:order-last mb-8 md:mb-0">
+            <div className="absolute -top-6 -left-6 w-full h-full bg-purple-600 rounded-xl opacity-10 transform rotate-2 hidden md:block"></div>
+            <div className="absolute -bottom-6 -right-6 w-full h-full bg-indigo-600 rounded-xl opacity-10 transform -rotate-2 hidden md:block"></div>
+            <div className="relative h-full overflow-hidden rounded-xl shadow-2xl cursor-pointer group" onClick={openModal}>
+              <img 
+                src={galleryImages[0].url}
+                alt={galleryImages[0].alt}
+                className="w-full h-full min-h-[350px] md:min-h-[500px] object-cover md:max-h-none transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-end p-8">
+                <div className="text-white">
+                  <h3 className="text-2xl font-bold">Excellence in Every Detail</h3>
+                  <p className="opacity-80">Precision engineering at its finest</p>
+                </div>
+              </div>
+              <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <span className="bg-white rounded-full p-4 transform transition-transform duration-300 hover:scale-110">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5v-4m0 4h-4m4 0l-5-5" />
+                  </svg>
+                </span>
+              </div>
+            </div>
+          </div>
+          
+          {/* Left Content - 50% - Moved to bottom on mobile */}
+          <div className="w-full md:w-1/2 md:pr-12 order-last md:order-first">
+            <div className="flex flex-col items-start text-left">
             <div className="inline-block px-4 py-1.5 bg-purple-100 text-purple-700 rounded-full text-sm font-medium tracking-wide mb-4">
               ABOUT US
             </div>
@@ -155,14 +182,13 @@ export default function About() {
                 <span className="absolute bottom-0 left-0 w-full h-1 bg-purple-600 opacity-30 rounded"></span>
               </span>
             </h2>
-            <p className="text-gray-600 text-lg leading-relaxed mb-6">
+            <p className="text-gray-600 text-lg leading-relaxed mb-6 text-left">
               Welcome to Alhamd Technologies, your premier destination for precision machining solutions. 
               With over a decade of experience in the manufacturing industry, we have established ourselves as trusted leaders 
               in CNC machining, fabrication, and custom manufacturing services. Our commitment to excellence 
               and attention to detail have made us the preferred partner for businesses seeking reliable 
               engineering solutions.
             </p>
-            
             <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* CNC Machining */}
               <div className="bg-white rounded-xl overflow-hidden shadow-sm border border-purple-100 hover:border-purple-300 hover:shadow-md transition-all duration-300 group">
@@ -175,7 +201,7 @@ export default function About() {
                   <h3 className="font-bold text-lg text-gray-800">CNC Machining</h3>
                 </div>
                 <div className="p-4 pt-2 border-t border-purple-50">
-                  <p className="text-gray-600">Precision CNC machining for complex parts with tight tolerances. Our 5-axis machines create intricate components for multiple industries.</p>
+                  <p className="text-gray-600 text-left">Precision CNC machining for complex parts with tight tolerances. Our 5-axis machines create intricate components for multiple industries.</p>
                   <div className="mt-3 flex items-center text-purple-600 text-sm font-medium">
                     <span>Learn more</span>
                     <svg className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -196,7 +222,7 @@ export default function About() {
                   <h3 className="font-bold text-lg text-gray-800">Drilling & Tapping</h3>
                 </div>
                 <div className="p-4 pt-2 border-t border-purple-50">
-                  <p className="text-gray-600">Expert drilling and tapping services with exact depth control and perfect thread pitch alignment for diverse applications.</p>
+                  <p className="text-gray-600 text-left">Expert drilling and tapping services with exact depth control and perfect thread pitch alignment for diverse applications.</p>
                   <div className="mt-3 flex items-center text-purple-600 text-sm font-medium">
                     <span>Learn more</span>
                     <svg className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -217,7 +243,7 @@ export default function About() {
                   <h3 className="font-bold text-lg text-gray-800">Band Saw Cutting</h3>
                 </div>
                 <div className="p-4 pt-2 border-t border-purple-50">
-                  <p className="text-gray-600">Precise material cutting with advanced band saw technology for clean, accurate cuts on various metals and alloys with minimal waste.</p>
+                  <p className="text-gray-600 text-left">Precise material cutting with advanced band saw technology for clean, accurate cuts on various metals and alloys with minimal waste.</p>
                   <div className="mt-3 flex items-center text-purple-600 text-sm font-medium">
                     <span>Learn more</span>
                     <svg className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -238,7 +264,7 @@ export default function About() {
                   <h3 className="font-bold text-lg text-gray-800">Custom Solutions</h3>
                 </div>
                 <div className="p-4 pt-2 border-t border-purple-50">
-                  <p className="text-gray-600">Tailored engineering solutions for unique challenges. We design, prototype, and manufacture custom parts that perfectly meet your specific requirements.</p>
+                  <p className="text-gray-600 text-left">Tailored engineering solutions for unique challenges. We design, prototype, and manufacture custom parts that perfectly meet your specific requirements.</p>
                   <div className="mt-3 flex items-center text-purple-600 text-sm font-medium">
                     <span>Learn more</span>
                     <svg className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -247,31 +273,6 @@ export default function About() {
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-          
-          {/* Right Image - 50% */}
-          <div className="w-full md:w-1/2 relative">
-            <div className="absolute -top-6 -left-6 w-full h-full bg-purple-600 rounded-xl opacity-10 transform rotate-2 hidden md:block"></div>
-            <div className="absolute -bottom-6 -right-6 w-full h-full bg-indigo-600 rounded-xl opacity-10 transform -rotate-2 hidden md:block"></div>
-            <div className="relative h-full overflow-hidden rounded-xl shadow-2xl cursor-pointer group" onClick={openModal}>
-              <img 
-                src={galleryImages[0].url}
-                alt={galleryImages[0].alt}
-                className="w-full h-full min-h-[500px] object-cover md:max-h-none transition-transform duration-500 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-end p-8">
-                <div className="text-white">
-                  <h3 className="text-2xl font-bold">Excellence in Every Detail</h3>
-                  <p className="opacity-80">Precision engineering at its finest</p>
-                </div>
-              </div>
-              <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                <span className="bg-white rounded-full p-4 transform transition-transform duration-300 hover:scale-110">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5v-4m0 4h-4m4 0l-5-5" />
-                  </svg>
-                </span>
               </div>
             </div>
           </div>
