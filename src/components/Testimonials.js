@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { isBrowser } from '../utils/clientUtils';
 
 export default function Testimonials() {
   return (
@@ -84,6 +85,9 @@ function TestimonialSlider() {
   
   useEffect(() => {
     const handleResize = () => {
+      // Only run on client side
+      if (!isBrowser()) return;
+      
       // Set visible slides based on screen width
       setVisibleSlides(window.innerWidth >= 768 ? 3 : 1);
     };
@@ -91,11 +95,13 @@ function TestimonialSlider() {
     // Initial setup
     handleResize();
     
-    // Add resize listener
-    window.addEventListener('resize', handleResize);
-    
-    // Cleanup
-    return () => window.removeEventListener('resize', handleResize);
+    // Add event listener for window resize
+    if (isBrowser()) {
+      window.addEventListener('resize', handleResize);
+      
+      // Cleanup
+      return () => window.removeEventListener('resize', handleResize);
+    }
   }, []);
   
   const nextSlide = () => {

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { isBrowser } from '../utils/clientUtils';
 
 export default function About() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -51,6 +52,8 @@ export default function About() {
 
   // Handle keyboard navigation
   useEffect(() => {
+    if (!isBrowser()) return;
+    
     const handleKeyPress = (e) => {
       if (!isModalOpen) return;
       

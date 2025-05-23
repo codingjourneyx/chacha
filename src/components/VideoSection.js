@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { getOrigin } from '../utils/clientUtils';
 
 const VideoSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -7,6 +8,7 @@ const VideoSection = () => {
   const [showControls, setShowControls] = useState(false);
   const playerRef = useRef(null);
   const controlsTimeoutRef = useRef(null);
+  const [origin, setOrigin] = useState('');
   
   const videos = [
     {
@@ -34,6 +36,11 @@ const VideoSection = () => {
       channelUrl: "https://www.youtube.com/@TheAlhamdTechnologies"
     }
   ];
+  
+  // Set origin on client-side only
+  useEffect(() => {
+    setOrigin(getOrigin());
+  }, []);
   
   // Setup YouTube API
   useEffect(() => {
@@ -192,7 +199,7 @@ const VideoSection = () => {
                 <iframe 
                   ref={playerRef}
                   className="absolute top-0 left-0 w-full h-full"
-                  src={`https://www.youtube.com/embed/${videos[activeIndex].id}?autoplay=1&mute=0&controls=0&modestbranding=1&rel=0&enablejsapi=1&origin=${window.location.origin}&showinfo=0&fs=1&disablekb=1&iv_load_policy=3&color=white`}
+                  src={`https://www.youtube.com/embed/${videos[activeIndex].id}?autoplay=1&mute=0&controls=0&modestbranding=1&rel=0&enablejsapi=1&origin=${origin}&showinfo=0&fs=1&disablekb=1&iv_load_policy=3&color=white`}
                   title={videos[activeIndex].title}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen

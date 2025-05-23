@@ -432,7 +432,7 @@ export default function Header() {
       {/* Enhanced Search Popup with Results */}
       {isSearchOpen && (
         <div 
-          className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-start justify-center pt-16 sm:pt-20 px-3 sm:px-4 search-popup-overlay pointer-events-auto opacity-0 transition-opacity duration-200"
+          className="fixed inset-0 bg-black/50 flex items-start justify-center pt-16 sm:pt-20 px-3 sm:px-4 search-popup-overlay pointer-events-auto opacity-0 transition-opacity duration-200"
           onClick={(e) => e.target === e.currentTarget && setIsSearchOpen(false)}
           style={{ transitionDelay: '50ms', zIndex: 100 }}
         >

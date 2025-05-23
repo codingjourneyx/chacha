@@ -445,7 +445,7 @@ export default function Services() {
             </span>
             <h3 className="text-xl md:text-3xl font-bold mb-4">
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-violet-600">
-                OUR SPECIALIZATIONS
+                <span id="specializations">OUR SPECIALIZATIONS</span>
               </span>
             </h3>
             <p className="text-gray-600 text-xs md:text-base max-w-2xl mx-auto">

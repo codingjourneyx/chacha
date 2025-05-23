@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
+import { isBrowser } from '../utils/clientUtils';
 
 const Hero = () => {
   // Add a scroll handler function
@@ -41,6 +42,8 @@ const Hero = () => {
 
   useEffect(() => {
     const checkScreenSize = () => {
+      if (!isBrowser()) return;
+      
       const width = window.innerWidth;
       setIsCustomWidthRange(width >= 1152 && width <= 1250);
     };
@@ -49,20 +52,23 @@ const Hero = () => {
     checkScreenSize();
     
     // Add event listener for window resize
-    window.addEventListener('resize', checkScreenSize);
-    
-    // Cleanup
-    return () => window.removeEventListener('resize', checkScreenSize);
+    if (isBrowser()) {
+      window.addEventListener('resize', checkScreenSize);
+      
+      // Cleanup
+      return () => window.removeEventListener('resize', checkScreenSize);
+    }
   }, []);
 
   return (
-    <section id="home" className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-950 via-indigo-950 to-black text-white pt-16 pb-8 sm:py-0">
+    <section id="home" className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-950 via-purple-950 to-black text-white pt-16 pb-8 sm:py-0">
       {/* Background decoration with improved effects */}
       <div className="absolute inset-0 z-0">
         <div className="absolute top-0 left-0 w-full h-full bg-[url('/grid-pattern.svg')] opacity-5"></div>
-        <div className="absolute -top-64 -right-64 w-[30rem] h-[30rem] rounded-full bg-purple-600/20 blur-[100px] hidden sm:block"></div>
-        <div className="absolute -bottom-32 -left-32 w-[25rem] h-[25rem] rounded-full bg-indigo-600/20 blur-[100px] hidden sm:block"></div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[20rem] sm:w-[40rem] h-[20rem] sm:h-[40rem] rounded-full bg-blue-600/10 blur-[120px]"></div>
+        <div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-purple-400 via-purple-600 to-purple-400"></div>
+        <div className="absolute -top-64 -right-64 w-[30rem] h-[30rem] rounded-full bg-purple-700/30 blur-[100px] hidden sm:block"></div>
+        <div className="absolute -bottom-32 -left-32 w-[25rem] h-[25rem] rounded-full bg-purple-600/30 blur-[100px] hidden sm:block"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[20rem] sm:w-[40rem] h-[20rem] sm:h-[40rem] rounded-full bg-purple-600/10 blur-[120px]"></div>
         
         {/* Enhanced animated floating elements - hide smallest ones on mobile */}
         <motion.div 
@@ -89,7 +95,7 @@ const Hero = () => {
             duration: 12,
             ease: "easeInOut" 
           }}
-          className="absolute bottom-1/3 left-1/4 w-24 sm:w-32 h-24 sm:h-32 bg-indigo-300/20 backdrop-blur-md rounded-full opacity-20"
+          className="absolute bottom-1/3 left-1/4 w-24 sm:w-32 h-24 sm:h-32 bg-purple-300/20 backdrop-blur-md rounded-full opacity-20"
         />
         <motion.div 
           animate={{ 
@@ -113,7 +119,7 @@ const Hero = () => {
             transition={{ duration: 0.7 }}
             className="mb-2 sm:mb-3"
           >
-            <span className="inline-block px-3 py-1 bg-gradient-to-r from-indigo-600/30 to-purple-600/30 text-indigo-200 text-[9px] sm:text-[10px] font-semibold tracking-wider rounded-full mb-3 sm:mb-4 backdrop-blur-sm border border-indigo-500/20">
+            <span className="inline-block px-3 py-1 bg-gradient-to-r from-purple-700/20 via-purple-600/30 to-purple-700/20 text-purple-200 text-[9px] sm:text-[10px] font-semibold tracking-wider rounded-full mb-3 sm:mb-4 backdrop-blur-sm border border-purple-500/20">
               INNOVATIVE TECHNOLOGY SOLUTIONS
             </span>
           </motion.div>
@@ -122,7 +128,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white via-indigo-200 to-white"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white via-purple-200 to-white"
           >
             ALHAMD TECHNOLOGIES
           </motion.h1>
@@ -131,7 +137,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.4 }}
-            className="text-xs sm:text-sm mb-5 sm:mb-6 md:mb-8 max-w-2xl text-slate-300/90 font-light leading-relaxed px-2 sm:px-0"
+            className="text-xs sm:text-sm mb-5 sm:mb-6 md:mb-8 max-w-2xl text-purple-100 font-light leading-relaxed px-2 sm:px-0"
           >
             Experience the difference with Alhamd Technologies – where excellence is not just a goal, but a guarantee. We deliver cutting-edge solutions tailored to transform your business in today's digital landscape.
           </motion.p>
@@ -146,7 +152,7 @@ const Hero = () => {
               <motion.button 
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.98 }}
-                className="px-5 py-2.5 sm:py-2 text-xs bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full text-white font-medium shadow-md shadow-indigo-600/30 hover:shadow-indigo-600/50 transition-all duration-300 w-full"
+                className="px-5 py-2.5 sm:py-2 text-xs bg-gradient-to-r from-purple-600 to-purple-800 rounded-full text-white font-medium shadow-md shadow-purple-500/30 hover:shadow-purple-500/50 transition-all duration-300 w-full"
               >
                 Explore Our Services
               </motion.button>
@@ -155,7 +161,7 @@ const Hero = () => {
               <motion.button 
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.98 }}
-                className="px-5 py-2.5 sm:py-2 text-xs bg-transparent border border-indigo-500/30 hover:border-indigo-500/80 rounded-full text-indigo-300 font-medium backdrop-blur-sm hover:bg-indigo-600/10 transition-all duration-300 w-full"
+                className="px-5 py-2.5 sm:py-2 text-xs bg-transparent border border-purple-500/30 hover:border-purple-500/80 rounded-full text-purple-200 font-medium backdrop-blur-sm hover:bg-purple-600/10 transition-all duration-300 w-full"
               >
                 Contact Us
               </motion.button>
@@ -166,7 +172,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.5 }}
-            className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-2 sm:gap-3 md:gap-4 mb-5 sm:mb-6 md:mb-8 w-full max-w-2xl"
+            className="grid grid-cols-4 sm:grid-cols-2 md:grid-cols-4 gap-2 sm:gap-3 md:gap-4 mb-5 sm:mb-6 md:mb-8 w-full max-w-2xl"
           >
             {[
               { value: '10+', label: 'Years Experience' },
@@ -176,14 +182,14 @@ const Hero = () => {
             ].map((stat, index) => (
               <motion.div 
                 key={index} 
-                className="flex flex-col items-center bg-white/5 backdrop-blur-sm rounded-lg p-1.5 sm:p-2 md:p-3 border border-white/10 hover:border-indigo-500/30 transition-all duration-300 hover:bg-white/10"
+                className="flex flex-col items-center bg-purple-900/30 backdrop-blur-md rounded-lg p-1.5 sm:p-2 md:p-3 border border-purple-500/20 hover:border-purple-500/50 transition-all duration-300 hover:bg-purple-700/40"
                 whileHover={{ 
                   y: -3,
                   transition: { duration: 0.2 }
                 }}
               >
-                <span className="text-lg sm:text-xl md:text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-300 mb-0.5">{stat.value}</span>
-                <span className="text-[8px] sm:text-[9px] md:text-[10px] text-slate-400">{stat.label}</span>
+                <span className="text-lg sm:text-xl md:text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-300 to-purple-400 mb-0.5">{stat.value}</span>
+                <span className="text-[8px] sm:text-[9px] md:text-[10px] text-purple-300">{stat.label}</span>
               </motion.div>
             ))}
           </motion.div>
@@ -208,7 +214,7 @@ const Hero = () => {
                   onClick={() => scrollToServiceAndShowPopup(service.id)}
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.98 }}
-                  className="text-indigo-200 text-[8px] sm:text-[9px] md:text-[10px] font-medium tracking-wide bg-white/5 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full hover:bg-white/10 transition-colors cursor-pointer border border-indigo-500/20 hover:border-indigo-500/50 backdrop-blur-sm mb-1.5"
+                  className="text-purple-200 text-[8px] sm:text-[9px] md:text-[10px] font-medium tracking-wide bg-purple-900/30 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full hover:bg-purple-700/40 transition-colors cursor-pointer border border-purple-500/20 hover:border-purple-500/50 backdrop-blur-sm mb-1.5"
                 >
                   {service.name}
                 </motion.button>
