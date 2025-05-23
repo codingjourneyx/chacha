@@ -2,10 +2,9 @@
 
 import React from 'react';
 import ContactHeader from './ContactComponents/ContactHeader';
-import ContactForm from './ContactComponents/ContactForm';
 import ContactInfo from './ContactComponents/ContactInfo';
-import BusinessHours from './ContactComponents/BusinessHours';
 import MapSection from './ContactComponents/MapSection';
+import CombinedContactForm from './ContactComponents/CombinedContactForm';
 
 export default function Contact() {
   return (
@@ -13,16 +12,15 @@ export default function Contact() {
       <div className="container mx-auto px-4 md:px-8">
         <ContactHeader />
         
-        {/* Two-column layout for form and map */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
-          <ContactForm />
-          <MapSection />
+        {/* Combined form with business hours */}
+        <div className="mb-12">
+          <CombinedContactForm />
         </div>
         
-        {/* Contact info and business hours */}
+        {/* Map and contact info */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <MapSection />
           <ContactInfo />
-          <BusinessHours />
         </div>
       </div>
     </section>

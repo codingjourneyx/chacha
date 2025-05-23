@@ -19,8 +19,8 @@ export default function MapSection() {
           ></iframe>
         </div>
         
-        <div className="mt-4 p-4 bg-blue-50 rounded-lg border border-blue-100">
-          <h4 className="font-semibold text-blue-800 mb-2">Visit Our Office</h4>
+        <div className="mt-4 p-4 bg-purple-50 rounded-lg border border-purple-100">
+          <h4 className="font-semibold text-purple-800 mb-2">Visit Our Office</h4>
           <p className="text-gray-700">
             Sector No - 14, Plot No - 14, Near Shivaji Maharaj Chowk, PCNTDA, 
             Pune, Maharashtra - 411044

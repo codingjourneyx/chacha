@@ -148,15 +148,15 @@ const VideoSection = () => {
   };
 
   return (
-    <section id="videos" className="relative w-full bg-gradient-to-br from-slate-900 via-indigo-950 to-black py-16 overflow-hidden">
+    <section id="videos" className="relative w-full bg-gradient-to-br from-slate-950 via-indigo-950 to-black py-16 overflow-hidden">
       {/* Background decorative elements */}
-      <div className="absolute -top-64 -right-64 w-96 h-96 rounded-full bg-purple-500/10 blur-3xl"></div>
-      <div className="absolute -bottom-32 -left-32 w-80 h-80 rounded-full bg-indigo-500/10 blur-3xl"></div>
+      <div className="absolute -top-64 -right-64 w-96 h-96 rounded-full bg-purple-600/20 blur-[100px]"></div>
+      <div className="absolute -bottom-32 -left-32 w-80 h-80 rounded-full bg-indigo-600/20 blur-[100px]"></div>
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-12">
           <div className="md:max-w-2xl">
-            <span className="px-4 py-1.5 bg-indigo-500/20 text-indigo-300 text-xs font-semibold tracking-wider rounded-full mb-4 inline-block">
+            <span className="px-4 py-1.5 bg-indigo-600/30 text-indigo-200 text-xs font-semibold tracking-wider rounded-full mb-4 inline-block">
               OUR COLLECTION
             </span>
             <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-4 bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-500">
@@ -169,8 +169,8 @@ const VideoSection = () => {
           
           <a href="https://www.youtube.com/@TheAlhamdTechnologies" target="_blank" rel="noopener noreferrer" 
              className="mt-6 md:mt-0 flex items-center justify-center px-6 py-3 rounded-xl text-sm font-medium 
-                      bg-gradient-to-r from-indigo-500 to-purple-600 text-white shadow-lg shadow-indigo-500/20 
-                      hover:shadow-indigo-500/40 transition-all duration-300">
+                      bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg shadow-indigo-600/30 
+                      hover:shadow-indigo-600/50 transition-all duration-300">
             <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
             </svg>
@@ -182,7 +182,7 @@ const VideoSection = () => {
           {/* Main video display - full width */}
           <div className="w-full">
             <div 
-              className="relative rounded-2xl overflow-hidden shadow-2xl bg-black border border-indigo-500/20 group transform transition-all duration-300"
+              className="relative rounded-2xl overflow-hidden shadow-2xl bg-black border border-indigo-600/20 group transform transition-all duration-300"
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
             >
@@ -210,7 +210,7 @@ const VideoSection = () => {
                 {/* Play icon overlay when paused */}
                 {!isPlaying && (
                   <div className="absolute inset-0 z-20 flex items-center justify-center pointer-events-none">
-                    <div className="w-24 h-24 bg-indigo-600/60 rounded-full flex items-center justify-center backdrop-blur-md shadow-xl shadow-indigo-500/20 animate-pulse">
+                    <div className="w-24 h-24 bg-indigo-600/60 rounded-full flex items-center justify-center backdrop-blur-md shadow-xl shadow-indigo-600/30 animate-pulse">
                       <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 text-white" viewBox="0 0 20 20" fill="currentColor">
                         <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
                       </svg>
@@ -310,7 +310,7 @@ const VideoSection = () => {
                     }`}
                   />
                   <div className={`absolute inset-0 ${
-                    index === activeIndex ? 'bg-indigo-500/10 border-2 border-indigo-500' : 'bg-black/40'
+                    index === activeIndex ? 'bg-indigo-600/10 border-2 border-indigo-600' : 'bg-black/40'
                   } rounded-xl`}></div>
                   
                   {/* Duration badge */}
@@ -320,9 +320,9 @@ const VideoSection = () => {
                   
                   {index === activeIndex && isPlaying && (
                     <div className="absolute bottom-2 left-2 flex items-center space-x-1">
-                      <div className="w-1.5 h-3 bg-indigo-500 rounded-sm animate-pulse"></div>
-                      <div className="w-1.5 h-4 bg-indigo-500 rounded-sm animate-pulse delay-75"></div>
-                      <div className="w-1.5 h-2.5 bg-indigo-500 rounded-sm animate-pulse delay-150"></div>
+                      <div className="w-1.5 h-3 bg-indigo-600 rounded-sm animate-pulse"></div>
+                      <div className="w-1.5 h-4 bg-indigo-600 rounded-sm animate-pulse delay-75"></div>
+                      <div className="w-1.5 h-2.5 bg-indigo-600 rounded-sm animate-pulse delay-150"></div>
                     </div>
                   )}
                 </div>

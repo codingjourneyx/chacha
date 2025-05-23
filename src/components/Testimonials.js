@@ -2,19 +2,25 @@ import React, { useState, useEffect } from 'react';
 
 export default function Testimonials() {
   return (
-    <section id="testimonials" className="min-h-screen flex items-center bg-gradient-to-br from-blue-700 to-blue-900 text-white py-24 md:py-32">
+    <section id="testimonials" className="min-h-screen flex items-center bg-gradient-to-br from-purple-700 to-purple-900 text-white py-24 md:py-32">
       <div className="container mx-auto px-4 md:px-8 py-16 w-full">
-        <div className="text-center mb-6">
-          <div className="inline-block px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium tracking-wide mb-4">
-            TESTIMONIALS
+        <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-6">
+          <div className="md:max-w-2xl">
+            <div className="inline-block px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm font-medium tracking-wide mb-4">
+              TESTIMONIALS
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+              What Our <span className="text-purple-200">Clients Say</span>
+            </h2>
+            <p className="text-purple-100 text-base max-w-3xl">
+              Don't just take our word for it. Here's what some of our valued clients have to say about our precision machining services.
+            </p>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            What Our <span className="text-blue-200">Clients Say</span>
-          </h2>
-          <div className="h-1 w-20 bg-blue-300 mx-auto mb-6"></div>
-          <p className="text-blue-100 text-lg max-w-3xl mx-auto">
-            Don't just take our word for it. Here's what some of our valued clients have to say about our precision machining services.
-          </p>
+          <div className="mt-6 md:mt-0">
+            <a href="#contact" className="inline-block px-6 py-3 bg-white text-purple-800 font-medium rounded-lg hover:bg-purple-100 transition-all duration-300 shadow-lg">
+              Work With Us
+            </a>
+          </div>
         </div>
         
         <div className="h-[550px] pb-8">
@@ -101,9 +107,9 @@ function TestimonialSlider() {
   return (
     <div className="bg-transparent p-8 rounded-3xl shadow-2xl text-white relative overflow-hidden h-full backdrop-blur-sm border border-white/10">
       {/* Decorative elements */}
-      <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-blue-500 opacity-20 blur-xl"></div>
-      <div className="absolute -bottom-32 -left-32 w-96 h-96 rounded-full bg-indigo-400 opacity-20 blur-xl"></div>
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-1/2 h-1/2 bg-blue-400 opacity-10 rounded-full blur-3xl"></div>
+      <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-purple-500 opacity-20 blur-xl"></div>
+      <div className="absolute -bottom-32 -left-32 w-96 h-96 rounded-full bg-violet-400 opacity-20 blur-xl"></div>
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-1/2 h-1/2 bg-purple-400 opacity-10 rounded-full blur-3xl"></div>
       
       {/* Slider container */}
       <div className="flex flex-col justify-between h-full">
@@ -135,7 +141,7 @@ function TestimonialSlider() {
                         />
                         <div>
                           <h4 className="font-bold text-white text-lg">{testimonial.name}</h4>
-                          <p className="text-blue-200 text-sm">{testimonial.role}</p>
+                          <p className="text-purple-200 text-sm">{testimonial.role}</p>
                         </div>
                       </div>
                       

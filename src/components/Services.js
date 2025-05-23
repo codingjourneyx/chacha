@@ -77,7 +77,7 @@ const services = [
     title: "Food Machinery Components",
     description: "We produce custom food-grade components for food processing equipment, meeting strict hygiene standards while ensuring optimal performance and longevity in food production environments.",
     image: "/images/placeholder-indigo.jpg",
-    icon: "M21 15.546c-.523 0-1.046.151-1.5.454a2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.701 2.701 0 00-1.5-.454M9 6v2m3-2v2m3-2v2M9 3h.01M12 3h.01M15 3h.01M21 21v-7a2 2 0 00-2-2H5a2 2 0 00-2 2v7h18zm-3-9v-2a2 2 0 00-2-2H8a2 2 0 00-2 2v2h12z"
+    icon: "M21 15.546c-.523 0-1.046.151-1.5.454a2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.701 2.701 0 00-1.5-.454M9 6v2m3-2v2m3-2v2M9 3h.01M12 3h.01M15 3h.01M21 21v-7a2 2 0 00-2-2H5a2 2 0 00-2 2v7h18zm-3-9v-2a2 2 0 00-2-2H8a2 2 0 00-2 2v2h12z"
   },
   {
     id: 12,
@@ -125,13 +125,13 @@ const ServiceModal = ({ service, isOpen, onClose }) => {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm" onClick={onClose}>
       <div 
-        className="bg-white rounded-xl shadow-2xl w-full max-w-5xl overflow-hidden animate-modal"
+        className="bg-white dark:bg-gray-900 rounded-xl shadow-2xl w-full max-w-6xl overflow-hidden animate-modal"
         onClick={e => e.stopPropagation()}
       >
           <div className="absolute top-4 right-4 z-10">
             <button 
               onClick={onClose}
-              className="p-2 rounded-full bg-white/80 hover:bg-white text-gray-600 hover:text-gray-900 transition-colors shadow-md"
+              className="p-2 rounded-full bg-white/80 dark:bg-gray-800/80 hover:bg-white dark:hover:bg-gray-800 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors shadow-md"
               aria-label="Close modal"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -140,14 +140,14 @@ const ServiceModal = ({ service, isOpen, onClose }) => {
             </button>
           </div>
           
-        <div className="flex flex-col md:flex-row">
+        <div className="flex flex-col lg:flex-row">
           {/* Left side - Image */}
-          <div className="md:w-2/5 h-64 md:h-auto relative bg-gradient-to-r from-purple-500 to-violet-500">
+          <div className="lg:w-2/5 h-64 lg:h-auto relative bg-gradient-to-r from-purple-600 to-violet-600">
             <div className="absolute inset-0 flex items-center justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-24 w-24 text-white/80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={service.icon} />
-            </svg>
-          </div>
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-24 w-24 text-white/80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={service.icon} />
+              </svg>
+            </div>
             <div className="absolute inset-0 bg-black/20">
               <Image 
                 src={service.image || "/images/placeholder-purple.jpg"}
@@ -156,32 +156,120 @@ const ServiceModal = ({ service, isOpen, onClose }) => {
                 objectFit="cover"
                 className="mix-blend-overlay opacity-60"
               />
-          </div>
-        </div>
-        
-          {/* Right side - Content */}
-          <div className="p-8 md:p-10 md:w-3/5">
-            <div className="flex flex-col mb-6 gap-4">
-            <h3 className="text-3xl font-bold text-gray-800">{service.title}</h3>
-              <div className="w-16 h-1 bg-purple-600 mb-2"></div>
             </div>
             
-            <p className="text-gray-600 text-lg leading-relaxed mb-8">{service.description}</p>
+            {/* Add service summary card */}
+            <div className="absolute bottom-0 left-0 right-0 bg-black/50 backdrop-blur-sm p-4 text-white">
+              <h4 className="font-bold mb-1">Why Choose Our {service.title}</h4>
+              <ul className="text-sm space-y-1">
+                <li className="flex items-center">
+                  <svg className="w-4 h-4 mr-1 text-purple-300" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                  </svg>
+                  Premium Quality Materials
+                </li>
+                <li className="flex items-center">
+                  <svg className="w-4 h-4 mr-1 text-purple-300" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                  </svg>
+                  Industry-Leading Precision
+                </li>
+                <li className="flex items-center">
+                  <svg className="w-4 h-4 mr-1 text-purple-300" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"></path>
+                  </svg>
+                  Long-Term Reliability
+                </li>
+              </ul>
+            </div>
+          </div>
+        
+          {/* Right side - Content */}
+          <div className="p-8 lg:p-10 lg:w-3/5">
+            <div className="mb-6">
+              <div className="flex items-center mb-2">
+                <span className="px-3 py-1 bg-purple-100 dark:bg-purple-900/40 text-purple-700 dark:text-purple-300 text-xs font-semibold tracking-wider rounded-full mr-3">
+                  PREMIUM SERVICE
+                </span>
+                <div className="h-px bg-gray-200 dark:bg-gray-700 flex-grow"></div>
+              </div>
+              <h3 className="text-3xl font-bold text-gray-800 dark:text-white mb-2">{service.title}</h3>
+              <div className="w-16 h-1 bg-purple-600 mb-4"></div>
+            </div>
             
-            <p className="text-gray-600 text-lg leading-relaxed mb-8">
-              Our team of experts uses state-of-the-art equipment and follows industry best practices to deliver exceptional results. 
-              We pride ourselves on precision, reliability, and meeting tight deadlines for all our {service.title.toLowerCase()} projects.
-            </p>
+            <div className="prose prose-purple dark:prose-invert mb-6">
+              <p className="text-gray-600 dark:text-gray-300 text-lg mb-4">{service.description}</p>
             
-            <a 
-              href="#contact"
-              className="px-6 py-2.5 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-lg transition-colors inline-flex items-center whitespace-nowrap"
-            >
-              Get a Quote
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-              </svg>
-            </a>
+              <p className="text-gray-600 dark:text-gray-300 text-lg mb-6">
+                Our team of experts uses state-of-the-art equipment and follows industry best practices to deliver exceptional results. 
+                We pride ourselves on precision, reliability, and meeting tight deadlines for all our {service.title.toLowerCase()} projects.
+              </p>
+            </div>
+            
+            {/* Features and Benefits */}
+            <div className="bg-purple-50 dark:bg-purple-900/20 p-5 rounded-lg mb-6">
+              <h4 className="font-bold text-gray-800 dark:text-white mb-3 flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-purple-600 dark:text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+                Service Benefits
+              </h4>
+              <div className="grid grid-cols-1 gap-3">
+                <div className="flex items-start">
+                  <svg className="w-5 h-5 mr-2 text-purple-600 dark:text-purple-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span className="dark:text-gray-300">Custom-tailored to your specific requirements</span>
+                </div>
+                <div className="flex items-start">
+                  <svg className="w-5 h-5 mr-2 text-purple-600 dark:text-purple-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span className="dark:text-gray-300">Highly durable components that last longer</span>
+                </div>
+                <div className="flex items-start">
+                  <svg className="w-5 h-5 mr-2 text-purple-600 dark:text-purple-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span className="dark:text-gray-300">Optimized for maximum performance</span>
+                </div>
+                <div className="flex items-start">
+                  <svg className="w-5 h-5 mr-2 text-purple-600 dark:text-purple-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span className="dark:text-gray-300">Cost-effective solutions with superior quality</span>
+                </div>
+              </div>
+            </div>
+            
+            {/* Contact CTA */}
+            <div className="border-t border-gray-100 dark:border-gray-800 pt-6">
+              <div className="flex flex-wrap items-center gap-3">
+                <a 
+                  href="#contact"
+                  className="px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-lg transition-colors inline-flex items-center whitespace-nowrap"
+                >
+                  Get a Quote
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                  </svg>
+                </a>
+                
+                {/* Contact icons */}
+                <a href="tel:+1234567890" className="flex items-center gap-2 px-4 py-3 rounded-lg border border-purple-200 dark:border-purple-800 hover:bg-purple-50 dark:hover:bg-purple-900/30 transition-colors text-purple-700 dark:text-purple-300">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 8V5z" />
+                  </svg>
+                  <span>Call Us</span>
+                </a>
+                <a href="mailto:info@company.com" className="flex items-center gap-2 px-4 py-3 rounded-lg border border-purple-200 dark:border-purple-800 hover:bg-purple-50 dark:hover:bg-purple-900/30 transition-colors text-purple-700 dark:text-purple-300">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                  <span>Email Us</span>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -233,6 +321,24 @@ export default function Services() {
     setIsModalOpen(false);
     document.body.style.overflow = '';
   };
+  
+  // Listen for custom event from Hero.js
+  useEffect(() => {
+    const handleOpenServicePopup = (event) => {
+      const serviceId = event.detail.serviceId;
+      const service = services.find(s => s.id === serviceId);
+      
+      if (service) {
+        handleServiceClick(service);
+      }
+    };
+    
+    document.addEventListener('openServicePopup', handleOpenServicePopup);
+    
+    return () => {
+      document.removeEventListener('openServicePopup', handleOpenServicePopup);
+    };
+  }, []);
   
   return (
     <section id="services" className="py-24 bg-gradient-to-br from-white via-purple-50 to-slate-50 relative overflow-hidden">

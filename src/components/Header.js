@@ -24,37 +24,91 @@ const services = [
     id: 1,
     title: "Milling Work",
     description: "Precision milling services for various materials and specifications.",
-    path: "#services"
+    path: "#services?id=1"
   },
   {
     id: 2,
     title: "Lathe Work",
     description: "Expert lathe operations for turning, boring, threading, and facing materials.",
-    path: "#services"
+    path: "#services?id=2"
   },
   {
     id: 3,
     title: "CNC Work",
     description: "State-of-the-art CNC machining for complex parts with high precision.",
-    path: "#services"
+    path: "#services?id=3"
   },
   {
     id: 4,
-    title: "Fabrication and Welding",
+    title: "Fabrication and Welding Work",
     description: "Assembly and joining of components with quality welding techniques.",
-    path: "#services"
+    path: "#services?id=4"
   },
   {
     id: 5,
-    title: "Marine Ship Parts",
-    description: "Specialized components engineered for maritime environments.",
-    path: "#services"
+    title: "Band Saw Machine",
+    description: "Clean and precise cuts on various materials using advanced Band Saw Machines.",
+    path: "#services?id=5"
   },
   {
     id: 6,
-    title: "Oil and Gas Equipment",
+    title: "Drilling, Tapping, Slotting",
+    description: "Creating holes, threads, and precise slots in a wide variety of materials.",
+    path: "#services?id=6"
+  },
+  {
+    id: 7,
+    title: "Petroleum & Petrochemical Components",
+    description: "Custom parts for demanding environments of the oil and chemical sector.",
+    path: "#services?id=7"
+  },
+  {
+    id: 8,
+    title: "Oil and Gas Field Equipment",
     description: "Precision-engineered components for oil and gas exploration.",
-    path: "#services"
+    path: "#services?id=8"
+  },
+  {
+    id: 9,
+    title: "Soap Factory Parts",
+    description: "Specialized equipment and parts used in soap manufacturing facilities.",
+    path: "#services?id=9"
+  },
+  {
+    id: 10,
+    title: "Crusher Machine Components",
+    description: "Heavy-duty parts built to withstand extreme wear and pressure in crushing operations.",
+    path: "#services?id=10"
+  },
+  {
+    id: 11,
+    title: "Food Machinery Components",
+    description: "Food-grade components meeting strict hygiene standards for food processing equipment.",
+    path: "#services?id=11"
+  },
+  {
+    id: 12,
+    title: "Marine Ship Parts",
+    description: "Specialized components engineered for maritime environments.",
+    path: "#services?id=12"
+  },
+  {
+    id: 13,
+    title: "Shaft Thread and Fitting Parts",
+    description: "Precision threaded shafts and custom fittings for industrial applications.",
+    path: "#services?id=13"
+  },
+  {
+    id: 14,
+    title: "Wire Cut and EDM",
+    description: "Electrical Discharge Machining for precise cuts in hard metals and complex geometries.",
+    path: "#services?id=14"
+  },
+  {
+    id: 15,
+    title: "Laser and Plasma Cutting",
+    description: "Advanced cutting services for exceptional precision on a wide range of materials.",
+    path: "#services?id=15"
   }
 ];
 
@@ -67,6 +121,8 @@ export default function Header() {
   const [showNotification, setShowNotification] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState({ pages: [], services: [] });
+  const [selectedService, setSelectedService] = useState(null);
+  const [showServicePopup, setShowServicePopup] = useState(false);
   const searchInputRef = useRef(null);
   const searchContainerRef = useRef(null);
   const headerRef = useRef(null);
@@ -219,8 +275,35 @@ export default function Header() {
 
   const handleSearchResultClick = (path) => {
     setIsSearchOpen(false);
-    // Navigate to the selected result
-    window.location.href = path;
+    
+    // Check if path contains service ID
+    if (path.includes('?id=')) {
+      const [section, queryString] = path.split('?');
+      const serviceId = parseInt(queryString.split('=')[1]);
+      
+      // Find the selected service
+      const service = services.find(s => s.id === serviceId);
+      if (service) {
+        // Set the selected service and show popup
+        setSelectedService(service);
+        setShowServicePopup(true);
+        
+        // Optionally, also navigate to services section
+        window.location.href = section;
+      } else {
+        // Fallback to just navigation if service not found
+        window.location.href = path;
+      }
+    } else {
+      // Regular navigation for non-service links
+      window.location.href = path;
+    }
+  };
+
+  // Function to close the service popup
+  const closeServicePopup = () => {
+    setShowServicePopup(false);
+    setSelectedService(null);
   };
 
   // Clean up blur effect when component unmounts
@@ -455,7 +538,7 @@ export default function Header() {
                   <div className="px-6 py-4">
                     <p className="text-sm font-semibold text-gray-600 mb-2">Popular searches:</p>
                     <div className="flex flex-wrap gap-2">
-                      {['Milling Work', 'CNC Work', 'Lathe Work', 'Marine Ship Parts', 'Contact'].map((term) => (
+                      {['Milling Work', 'CNC Work', 'Lathe Work', 'Marine Ship Parts', 'Fabrication', 'Oil and Gas', 'Wire Cut', 'Laser Cutting', 'Contact'].map((term) => (
                         <button 
                           key={term}
                           className="px-3 py-1 bg-gray-100 hover:bg-purple-50 rounded-full text-sm text-gray-700 hover:text-purple-600 transition-colors duration-200"
@@ -504,5 +587,18 @@ export default function Header() {
 .blur-background > *:not(.z-50) {
   filter: blur(5px);
   transition: filter 0.3s ease-out;
+}
+
+@keyframes highlightService {
+  0% { box-shadow: 0 0 0 0 rgba(124, 58, 237, 0); }
+  30% { box-shadow: 0 0 0 10px rgba(124, 58, 237, 0.3); }
+  70% { box-shadow: 0 0 0 10px rgba(124, 58, 237, 0.3); }
+  100% { box-shadow: 0 0 0 0 rgba(124, 58, 237, 0); }
+}
+
+.highlight-service {
+  animation: highlightService 2s ease-out;
+  background-color: rgba(124, 58, 237, 0.1);
+  transition: background-color 2s;
 }
 */ 

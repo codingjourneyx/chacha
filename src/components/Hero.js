@@ -15,6 +15,26 @@ const Hero = () => {
       });
     }
   };
+  
+  // Function to scroll to services section and trigger popup
+  const scrollToServiceAndShowPopup = (serviceId) => {
+    // First scroll to services section
+    const servicesSection = document.getElementById('services');
+    if (servicesSection) {
+      servicesSection.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+      
+      // After scrolling, dispatch custom event to open the popup
+      setTimeout(() => {
+        const event = new CustomEvent('openServicePopup', { 
+          detail: { serviceId } 
+        });
+        document.dispatchEvent(event);
+      }, 800); // Delay to allow scroll to complete
+    }
+  };
 
   // State to track if screen width is in the custom range
   const [isCustomWidthRange, setIsCustomWidthRange] = useState(false);
@@ -176,16 +196,16 @@ const Hero = () => {
           >
             <div className="flex justify-start gap-2 flex-wrap">
               {[
-                { name: "Milling Work", id: "milling" },
-                { name: "Lathe Work", id: "lathe" },
-                { name: "CNC Work", id: "cnc" },
-                { name: "Fabrication & Welding", id: "fabrication" },
-                { name: "Band Saw Machine", id: "bandsaw" },
-                { name: "Drilling & Tapping", id: "drilling" }
+                { name: "Milling Work", id: 1 },
+                { name: "Lathe Work", id: 2 },
+                { name: "CNC Work", id: 3 },
+                { name: "Fabrication & Welding", id: 4 },
+                { name: "Band Saw Machine", id: 5 },
+                { name: "Drilling & Tapping", id: 6 }
               ].map((service, index) => (
                 <motion.button
                   key={index}
-                  onClick={() => scrollToSection(service.id)}
+                  onClick={() => scrollToServiceAndShowPopup(service.id)}
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.98 }}
                   className="text-indigo-200 text-[10px] font-medium tracking-wide bg-white/5 px-3 py-1.5 rounded-full hover:bg-white/10 transition-colors cursor-pointer border border-indigo-500/20 hover:border-indigo-500/50 backdrop-blur-sm"
