@@ -11,27 +11,24 @@ const VideoSection = () => {
   const videos = [
     {
       id: "phdfzUwINZw",
-      title: "À la découverte du Groenland",
+      title: "Alhamd Technologies Mechanical Workshop in Rabale",
       description: "6 ans d'action solidaire, plus de 19 millions d'euros de dons, 479 projets d'associations soutenues, 144 heures d'émissions et de bénévolat, des centaines de milliers d'auditeurs, de téléspectateurs et d'internautes sensibilisés à la cause...",
-      tag: "EXPLORATION",
       thumbnail: "https://img.youtube.com/vi/phdfzUwINZw/hqdefault.jpg",
       duration: "13:45",
       channelUrl: "https://www.youtube.com/@TheAlhamdTechnologies"
     },
     {
       id: "e_INgbU8E-E",
-      title: "La 7ème édition de Viva For Life est lancée !",
+      title: "Working of Lathe Machine & Milling Machine",
       description: "Rejoignez-nous pour cette nouvelle édition de solidarité et de générosité.",
-      tag: "ÉVÉNEMENT",
       thumbnail: "https://img.youtube.com/vi/e_INgbU8E-E/hqdefault.jpg",
       duration: "8:32",
       channelUrl: "https://www.youtube.com/@TheAlhamdTechnologies"
     },
     {
       id: "Rem8Uo1ToHM",
-      title: "Découvrez les merveilles naturelles",
-      description: "Une aventure extraordinaire à travers les paysages les plus spectaculaires du monde.",
-      tag: "NATURE",
+      title: "Working of Lathe Machine",
+      description: "Rejoignez-nous pour cette nouvelle édition de solidarité et de générosité.",
       thumbnail: "https://img.youtube.com/vi/Rem8Uo1ToHM/hqdefault.jpg",
       duration: "15:20",
       channelUrl: "https://www.youtube.com/@TheAlhamdTechnologies"

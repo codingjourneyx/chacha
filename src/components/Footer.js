@@ -51,10 +51,11 @@ export default function Footer() {
       </div>
       
       <div className="container mx-auto px-4 md:px-8 relative z-10">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-4 lg:gap-6">
-          {/* Company Info */}
-          <div className="md:col-span-3 space-y-6">
-            <div className="flex items-center">
+        {/* Horizontal Navigation Menu - Removed */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-12 gap-4 justify-items-end">
+          {/* Column 1: A ALHAMD TECH */}
+          <div className="md:col-span-3  space-y-6 mr-10 justify-self-end">
+            <div className="flex items-center mb-2">
               <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-purple-700 rounded-lg flex items-center justify-center shadow-lg mr-3">
                 <span className="text-white font-bold text-xl">A</span>
               </div>
@@ -71,27 +72,6 @@ export default function Footer() {
             
             <div className="flex space-x-3 pt-4">
               {/* Social Icons with modern styling */}
-              <a href="#" className="group">
-                <div className="w-10 h-10 rounded-lg bg-purple-900/30 hover:bg-purple-600 flex items-center justify-center backdrop-blur-sm border border-purple-500/10 transition-all duration-300 group-hover:scale-110">
-                  <svg className="w-5 h-5 text-purple-300 group-hover:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/>
-                  </svg>
-                </div>
-              </a>
-              <a href="#" className="group">
-                <div className="w-10 h-10 rounded-lg bg-purple-900/30 hover:bg-purple-600 flex items-center justify-center backdrop-blur-sm border border-purple-500/10 transition-all duration-300 group-hover:scale-110">
-                  <svg className="w-5 h-5 text-purple-300 group-hover:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M23.954 4.569c-.885.389-1.83.654-2.825.775 1.014-.611 1.794-1.574 2.163-2.723-.951.555-2.005.959-3.127 1.184-.896-.959-2.173-1.559-3.591-1.559-2.717 0-4.92 2.203-4.92 4.917 0 .39.045.765.127 1.124-4.09-.193-7.715-2.157-10.141-5.126-.427.722-.666 1.561-.666 2.475 0 1.71.87 3.213 2.188 4.096-.807-.026-1.566-.248-2.228-.616v.061c0 2.385 1.693 4.374 3.946 4.827-.413.111-.849.171-1.296.171-.314 0-.615-.03-.916-.086.631 1.953 2.445 2.445 3.377 4.604 3.417-1.68 1.319-3.809 2.105-6.102 2.105-.39 0-.779-.023-1.17-.067 2.189 1.394 4.768 2.209 7.557 2.209 9.054 0 14-7.503 14-14v-.617c.961-.689 1.8-1.56 2.46-2.548z"/>
-                  </svg>
-                </div>
-              </a>
-              <a href="#" className="group">
-                <div className="w-10 h-10 rounded-lg bg-purple-900/30 hover:bg-purple-600 flex items-center justify-center backdrop-blur-sm border border-purple-500/10 transition-all duration-300 group-hover:scale-110">
-                  <svg className="w-5 h-5 text-purple-300 group-hover:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2 8c0 .557-.447 1.008-1 1.008s-1-.45-1-1.008c0-.557.447-1.008 1-1.008s1 .452 1 1.008zm0 2h-2v6h2v-6zm3 0h-2v6h2v-2.861c0-1.722 2.002-1.881 2.002 0v2.861h1.998v-3.359c0-3.284-3.128-3.164-4-1.548v-1.093z"/>
-                  </svg>
-                </div>
-              </a>
               <a href="https://www.youtube.com/@TheAlhamdTechnologies" target="_blank" rel="noopener noreferrer" className="group">
                 <div className="w-10 h-10 rounded-lg bg-purple-900/30 hover:bg-purple-600 flex items-center justify-center backdrop-blur-sm border border-purple-500/10 transition-all duration-300 group-hover:scale-110">
                   <svg className="w-5 h-5 text-purple-300 group-hover:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -102,100 +82,14 @@ export default function Footer() {
             </div>
           </div>
           
-          {/* Quick Links */}
-          <div className="md:col-span-2 space-y-5">
-            <h3 className="text-base font-semibold relative inline-block mb-4">
-              <span className="text-white">Navigate</span>
-              <span className="absolute -bottom-1 left-0 w-12 h-0.5 bg-gradient-to-r from-purple-400 to-purple-600"></span>
-            </h3>
-            <nav className="flex flex-col space-y-3">
-              <Link href="#home" className="text-purple-200 hover:text-white transition-colors group flex items-center">
-                <span className="w-0 group-hover:w-5 h-px bg-purple-400 mr-0 group-hover:mr-2 transition-all duration-300 ease-out"></span>
-                Home
-              </Link>
-              <Link href="#services" className="text-purple-200 hover:text-white transition-colors group flex items-center">
-                <span className="w-0 group-hover:w-5 h-px bg-purple-400 mr-0 group-hover:mr-2 transition-all duration-300 ease-out"></span>
-                Services
-              </Link>
-              <Link href="#about" className="text-purple-200 hover:text-white transition-colors group flex items-center">
-                <span className="w-0 group-hover:w-5 h-px bg-purple-400 mr-0 group-hover:mr-2 transition-all duration-300 ease-out"></span>
-                About
-              </Link>
-              <Link href="#testimonials" className="text-purple-200 hover:text-white transition-colors group flex items-center">
-                <span className="w-0 group-hover:w-5 h-px bg-purple-400 mr-0 group-hover:mr-2 transition-all duration-300 ease-out"></span>
-                Testimonials
-              </Link>
-              <Link href="#videos" className="text-purple-200 hover:text-white transition-colors group flex items-center">
-                <span className="w-0 group-hover:w-5 h-px bg-purple-400 mr-0 group-hover:mr-2 transition-all duration-300 ease-out"></span>
-                Videos
-              </Link>
-              <Link href="#contact" className="text-purple-200 hover:text-white transition-colors group flex items-center">
-                <span className="w-0 group-hover:w-5 h-px bg-purple-400 mr-0 group-hover:mr-2 transition-all duration-300 ease-out"></span>
-                Contact
-              </Link>
-            </nav>
-          </div>
-          
-          {/* Products Column changed to Specialization */}
-          <div className="md:col-span-2 space-y-5">
-            <h3 className="text-base font-semibold relative inline-block mb-4">
-              <span className="text-white">Specialization</span>
-              <span className="absolute -bottom-1 left-0 w-12 h-0.5 bg-gradient-to-r from-purple-400 to-purple-600"></span>
-            </h3>
-            <nav className="flex flex-col space-y-3">
-              <Link href="#services?id=1" className="text-purple-200 hover:text-white transition-colors group flex items-center">
-                <span className="w-0 group-hover:w-5 h-px bg-purple-400 mr-0 group-hover:mr-2 transition-all duration-300 ease-out"></span>
-                Milling Work
-              </Link>
-              <Link href="#services?id=2" className="text-purple-200 hover:text-white transition-colors group flex items-center">
-                <span className="w-0 group-hover:w-5 h-px bg-purple-400 mr-0 group-hover:mr-2 transition-all duration-300 ease-out"></span>
-                Lathe Work
-              </Link>
-              <Link href="#services?id=3" className="text-purple-200 hover:text-white transition-colors group flex items-center">
-                <span className="w-0 group-hover:w-5 h-px bg-purple-400 mr-0 group-hover:mr-2 transition-all duration-300 ease-out"></span>
-                CNC Work
-              </Link>
-              <Link href="#services?id=4" className="text-purple-200 hover:text-white transition-colors group flex items-center">
-                <span className="w-0 group-hover:w-5 h-px bg-purple-400 mr-0 group-hover:mr-2 transition-all duration-300 ease-out"></span>
-                Fabrication and Welding
-              </Link>
-            </nav>
-          </div>
-          
-          {/* Resources Column changed to Facilities & Capabilities */}
-          <div className="md:col-span-2 space-y-5">
-            <h3 className="text-base font-semibold relative inline-block mb-4">
-              <span className="text-white">Facilities & Capabilities</span>
-              <span className="absolute -bottom-1 left-0 w-12 h-0.5 bg-gradient-to-r from-purple-400 to-purple-600"></span>
-            </h3>
-            <nav className="flex flex-col space-y-3">
-              <Link href="#services?id=14" className="text-purple-200 hover:text-white transition-colors group flex items-center">
-                <span className="w-0 group-hover:w-5 h-px bg-purple-400 mr-0 group-hover:mr-2 transition-all duration-300 ease-out"></span>
-                Wire Cut and EDM
-              </Link>
-              <Link href="#services?id=15" className="text-purple-200 hover:text-white transition-colors group flex items-center">
-                <span className="w-0 group-hover:w-5 h-px bg-purple-400 mr-0 group-hover:mr-2 transition-all duration-300 ease-out"></span>
-                Laser and Plasma Cutting
-              </Link>
-              <Link href="#services?id=5" className="text-purple-200 hover:text-white transition-colors group flex items-center">
-                <span className="w-0 group-hover:w-5 h-px bg-purple-400 mr-0 group-hover:mr-2 transition-all duration-300 ease-out"></span>
-                Band Saw Machine
-              </Link>
-              <Link href="#services?id=6" className="text-purple-200 hover:text-white transition-colors group flex items-center">
-                <span className="w-0 group-hover:w-5 h-px bg-purple-400 mr-0 group-hover:mr-2 transition-all duration-300 ease-out"></span>
-                Drilling, Tapping, Slotting
-              </Link>
-            </nav>
-          </div>
-          
-          {/* Contact Info */}
-          <div className="md:col-span-3 space-y-5">
+          {/* Column 2: Get in Touch */}
+          <div className="md:col-span-3 space-y-5 justify-self-end">
             <h3 className="text-base font-semibold relative inline-block mb-4">
               <span className="text-white">Get in Touch</span>
               <span className="absolute -bottom-1 left-0 w-12 h-0.5 bg-gradient-to-r from-purple-400 to-purple-600"></span>
             </h3>
             <div className="space-y-4">
-              <a href="#map" className="flex items-center text-purple-200 group hover:text-white transition-colors">
+              <a href="#map" className="mt-2 flex items-justify-top text-purple-200 group hover:text-white transition-colors">
                 <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-purple-900/30 backdrop-blur-md flex items-center justify-center border border-purple-500/20 mr-3 group-hover:bg-purple-700/40 transition-colors">
                   <svg className="w-4 h-4 text-purple-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
@@ -222,17 +116,72 @@ export default function Footer() {
               </a>
             </div>
           </div>
+          
+          {/* Column 3: Specialization */}
+          <div className="md:col-span-3 space-y-5 justify-self-end">
+            <h3 className="text-base font-semibold relative inline-block mb-4">
+              <span className="text-white">Specialization</span>
+              <span className="absolute -bottom-1 left-0 w-12 h-0.5 bg-gradient-to-r from-purple-400 to-purple-600"></span>
+            </h3>
+            <nav className="flex flex-col space-y-3">
+              <Link href="#services?id=1" className="text-white hover:text-purple-300 flex items-center">
+                Petroleum & Petrochemical
+              </Link>
+              <Link href="#services?id=2" className="text-white hover:text-purple-300 flex items-center">
+                Oil & Gas Field Equipment
+              </Link>
+              <Link href="#services?id=3" className="text-white hover:text-purple-300 flex items-center">
+                Soap Factory Parts
+              </Link>
+              <Link href="#services?id=4" className="text-white hover:text-purple-300 flex items-center">
+                Crusher Machine Components
+              </Link>
+              <Link href="#services?id=7" className="text-white hover:text-purple-300 flex items-center">
+                Food Machinery Components
+              </Link>
+              <Link href="#services?id=8" className="text-white hover:text-purple-300 flex items-center">
+                Marine Ship Parts
+              </Link>
+              <Link href="#services?id=9" className="text-white hover:text-purple-300 flex items-center">
+                Shaft Thread & Fitting Parts
+              </Link>
+            </nav>
+          </div>
+          {/* Column 4: Facilities & Capabilities */}
+          <div className="md:col-span-3 space-y-5 justify-self-end">
+            <h3 className="text-base font-semibold relative inline-block mb-4">
+              <span className="text-white">Facilities & Capabilities</span>
+              <span className="absolute -bottom-1 left-0 w-12 h-0.5 bg-gradient-to-r from-purple-400 to-purple-600"></span>
+            </h3>
+            <nav className="flex flex-col space-y-3">
+              <Link href="#services?id=14" className="text-white hover:text-purple-300 flex items-center">
+                CNC Precision Works
+              </Link>
+              <Link href="#services?id=15" className="text-white hover:text-purple-300 flex items-center">
+                All Types of Lathe Work
+              </Link>
+              <Link href="#services?id=5" className="text-white hover:text-purple-300 flex items-center">
+                All Type of Milling Work
+              </Link>
+              <Link href="#services?id=6" className="text-white hover:text-purple-300 flex items-center">
+                Fabrication and Welding
+              </Link>
+              <Link href="#services?id=16" className="text-white hover:text-purple-300 flex items-center">
+                Cutting Facilities
+              </Link>
+              <Link href="#services?id=17" className="text-white hover:text-purple-300 flex items-center">
+                Wire Cut and EDM
+              </Link>
+              <Link href="#services?id=18" className="text-white hover:text-purple-300 flex items-center">
+                Laser and Plasma Cutting
+              </Link>
+            </nav>
+          </div>
         </div>
-        
-        <div className="mt-16 pt-8 border-t border-purple-900/50 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-purple-300/70 text-sm order-2 md:order-1 mt-4 md:mt-0">
+        <div className="mt-16 pt-8 border-t border-purple-900/50 flex justify-center items-center">
+          <p className="text-purple-300/70 text-sm tracking-wide">
             &copy; {new Date().getFullYear()} Alhamd Technologies. All rights reserved.
           </p>
-          <div className="flex flex-wrap justify-center gap-6 text-sm text-purple-300/70 order-1 md:order-2">
-            <Link href="/privacy" className="hover:text-purple-200 transition-colors">Privacy Policy</Link>
-            <Link href="/terms" className="hover:text-purple-200 transition-colors">Terms of Service</Link>
-            <Link href="/cookies" className="hover:text-purple-200 transition-colors">Cookie Policy</Link>
-          </div>
         </div>
       </div>
     </footer>
