@@ -128,7 +128,6 @@ const ServiceModal = ({ service, isOpen, onClose }) => {
         className="bg-white rounded-xl shadow-2xl w-full max-w-5xl overflow-hidden animate-modal"
         onClick={e => e.stopPropagation()}
       >
-        <div className="relative">
           <div className="absolute top-4 right-4 z-10">
             <button 
               onClick={onClose}
@@ -141,16 +140,39 @@ const ServiceModal = ({ service, isOpen, onClose }) => {
             </button>
           </div>
           
-          <div className="h-48 bg-gradient-to-r from-purple-500 to-violet-500 flex items-center justify-center">
+        <div className="flex flex-col md:flex-row">
+          {/* Left side - Image */}
+          <div className="md:w-2/5 h-64 md:h-auto relative bg-gradient-to-r from-purple-500 to-violet-500">
+            <div className="absolute inset-0 flex items-center justify-center">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-24 w-24 text-white/80" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={service.icon} />
             </svg>
           </div>
+            <div className="absolute inset-0 bg-black/20">
+              <Image 
+                src={service.image || "/images/placeholder-purple.jpg"}
+                alt={service.title}
+                layout="fill"
+                objectFit="cover"
+                className="mix-blend-overlay opacity-60"
+              />
+          </div>
         </div>
         
-        <div className="p-8 md:p-10">
-          <div className="flex flex-col md:flex-row md:items-center justify-between mb-6 gap-4">
+          {/* Right side - Content */}
+          <div className="p-8 md:p-10 md:w-3/5">
+            <div className="flex flex-col mb-6 gap-4">
             <h3 className="text-3xl font-bold text-gray-800">{service.title}</h3>
+              <div className="w-16 h-1 bg-purple-600 mb-2"></div>
+            </div>
+            
+            <p className="text-gray-600 text-lg leading-relaxed mb-8">{service.description}</p>
+            
+            <p className="text-gray-600 text-lg leading-relaxed mb-8">
+              Our team of experts uses state-of-the-art equipment and follows industry best practices to deliver exceptional results. 
+              We pride ourselves on precision, reliability, and meeting tight deadlines for all our {service.title.toLowerCase()} projects.
+            </p>
+            
             <a 
               href="#contact"
               className="px-6 py-2.5 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-lg transition-colors inline-flex items-center whitespace-nowrap"
@@ -161,12 +183,6 @@ const ServiceModal = ({ service, isOpen, onClose }) => {
               </svg>
             </a>
           </div>
-          <p className="text-gray-600 text-lg leading-relaxed mb-8 max-w-4xl">{service.description}</p>
-          
-          <p className="text-gray-600 text-lg leading-relaxed mb-8">
-            Our team of experts uses state-of-the-art equipment and follows industry best practices to deliver exceptional results. 
-            We pride ourselves on precision, reliability, and meeting tight deadlines for all our {service.title.toLowerCase()} projects.
-          </p>
         </div>
       </div>
     </div>
@@ -206,6 +222,20 @@ function ServiceCard({ service, onClick }) {
 export default function Services() {
   const [selectedService, setSelectedService] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isCustomWidthRange, setIsCustomWidthRange] = useState(false);
+  
+  useEffect(() => {
+    const checkScreenSize = () => {
+      const width = window.innerWidth;
+      setIsCustomWidthRange(width >= 1152 && width <= 1250);
+    };
+    
+    checkScreenSize();
+    
+    window.addEventListener('resize', checkScreenSize);
+    
+    return () => window.removeEventListener('resize', checkScreenSize);
+  }, []);
   
   const handleServiceClick = (service) => {
     setSelectedService(service);
@@ -225,40 +255,75 @@ export default function Services() {
       <div className="absolute -bottom-32 -left-32 w-80 h-80 rounded-full bg-violet-100/40 blur-3xl"></div>
       <div className="absolute top-1/4 left-1/2 w-64 h-64 rounded-full bg-blue-100/30 blur-3xl"></div>
       
-      <div className="container mx-auto px-4 md:px-6 max-w-7xl relative z-10">
+      <div className={`w-full max-w-[1920px] mx-auto px-4 md:px-6 lg:px-8 py-8 md:py-12 relative z-10 ${isCustomWidthRange ? '!px-8' : ''}`}>
         <div className="flex flex-col lg:flex-row gap-12 mb-24">
           {/* Left side - Introduction */}
-          <div className="lg:w-2/5 lg:sticky lg:top-24 lg:self-start">
-            <div className="p-8">
+          <div className="lg:w-2/5 lg:sticky lg:top-24 lg:self-top mt-7">
+            <div className="">
               <span className="px-4 py-1.5 bg-purple-100 text-purple-700 text-xs font-semibold tracking-wider rounded-full mb-6 inline-block">
                 WHAT WE OFFER
               </span>
               <h2 className="text-4xl md:text-5xl font-extrabold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-violet-600">
                 OUR SERVICES
               </h2>
-              <div className="w-20 h-1 bg-purple-600 mb-8"></div>
-              <p className="text-gray-600 mb-5 text-lg">
+              <p className="text-gray-600 mb-8 text-lg font-medium">
                 We provide specialized machining and manufacturing services across multiple industries, 
-                delivering precision components and reliable solutions.
+                delivering <span className="text-purple-700 font-bold">precision components</span> and <span className="text-purple-700 font-bold">reliable solutions</span>.
               </p>
-              <p className="text-gray-600 mb-5">
-                With over two decades of experience, our team of skilled engineers and technicians utilize cutting-edge technology to ensure exceptional quality and precision in every project we undertake.
-              </p>
-              <p className="text-gray-600 mb-5">
-                From custom fabrication to precision machining, we pride ourselves on meeting the most demanding specifications while maintaining competitive pricing and timely delivery.
-              </p>
+              
+              {/* Key points with icons */}
+              <div className="space-y-6 mb-8">
+                <div className="flex items-start">
+                  <div className="flex-shrink-0 bg-purple-100 rounded-lg p-2 mr-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-gray-800 mb-1">Decades of Experience</h3>
+                    <p className="text-gray-600">
+                      Over <span className="text-purple-700 font-semibold">20+ years</span> of expertise with skilled engineers and technicians utilizing <span className="text-purple-700 font-semibold">cutting-edge technology</span> for exceptional quality.
+                    </p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start">
+                  <div className="flex-shrink-0 bg-purple-100 rounded-lg p-2 mr-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-gray-800 mb-1">Precision & Quality</h3>
+                    <p className="text-gray-600">
+                      From custom fabrication to precision machining, we meet the <span className="text-purple-700 font-semibold">most demanding specifications</span> with competitive pricing and timely delivery.
+                    </p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start">
+                  <div className="flex-shrink-0 bg-purple-100 rounded-lg p-2 mr-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-gray-800 mb-1">Trusted Industry Partner</h3>
               <p className="text-gray-600">
-                Our commitment to excellence has made us a trusted partner for businesses in petroleum, manufacturing, marine, and food processing industries seeking reliable engineering solutions.
+                      Our commitment to excellence has made us a trusted partner for businesses in <span className="text-purple-700 font-semibold">petroleum, manufacturing, marine, and food processing</span> industries.
               </p>
+                  </div>
+                </div>
+              </div>
               
               {/* Get a Quote Button */}
               <div className="mt-8">
                 <a 
                   href="#contact" 
-                  className="w-full px-8 py-3 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-lg transition-colors shadow-md hover:shadow-lg inline-flex items-center justify-center"
+                  className="w-full px-8 py-3 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-lg transition-colors shadow-md hover:shadow-lg inline-flex items-center justify-center group"
                 >
                   Get a Quote
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2 group-hover:translate-x-1 transition-transform" viewBox="0 0 20 20" fill="currentColor">
                     <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
                   </svg>
                 </a>
@@ -281,51 +346,123 @@ export default function Services() {
         </div>
         
         <div className="mb-24">
-          <div className="flex items-center justify-center mb-12">
-            <div className="h-px bg-purple-200 w-16"></div>
-            <h3 className="text-2xl font-bold text-center text-gray-800 mx-4 px-6 py-2 bg-white/70 backdrop-blur-sm rounded-full shadow-sm">
+          <div className="text-center mb-12">
+            <div className="w-full pt-10 border-t border-purple-300/50 mb-8"></div>
+            <span className="px-4 py-1.5 bg-purple-100 text-purple-700 text-xs font-semibold tracking-wider rounded-full mb-4 inline-block">
+              INDUSTRY SOLUTIONS
+            </span>
+            <h3 className="text-2xl md:text-3xl font-bold mb-4">
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-violet-600">
-                SPECIALIZATIONS
+                OUR SPECIALIZATIONS
               </span>
             </h3>
-            <div className="h-px bg-purple-200 w-16"></div>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              We deliver precision-engineered components and solutions for specialized industries with unique requirements and challenges.
+            </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {services.slice(6, 13).map((service) => (
-              <ServiceCard 
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-4 gap-y-6">
+            {services.slice(6, 13).map((service, index) => (
+              <div 
                 key={service.id}
-                service={service}
-                onClick={handleServiceClick}
-              />
+                className="group relative"
+              >
+                {/* Card with hover effects */}
+                <div 
+                  className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 h-full flex flex-col border border-purple-50 group-hover:border-purple-200"
+                  onClick={() => handleServiceClick(service)}
+                >
+                  {/* Top accent bar */}
+                  <div className="h-2 bg-gradient-to-r from-purple-500 to-violet-500"></div>
+                  
+                  {/* Icon */}
+                  <div className="p-6">
+                    <div className="w-14 h-14 rounded-lg bg-purple-100 flex items-center justify-center mb-5 group-hover:bg-purple-200 transition-all duration-300">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d={service.icon} />
+                      </svg>
+                    </div>
+                    
+                    {/* Content */}
+                    <h3 className="text-xl font-bold mb-3 text-gray-800 group-hover:text-purple-700 transition-colors duration-300">{service.title}</h3>
+                    <p className="text-gray-600 text-sm leading-relaxed mb-6">{service.description.substring(0, 120)}...</p>
+                    
+                    {/* Bottom action */}
+                    <div className="mt-auto pt-4 border-t border-gray-100">
+                      <button 
+                        className="text-purple-600 text-sm font-medium flex items-center group-hover:translate-x-1 transition-transform duration-300"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleServiceClick(service);
+                        }}
+                      >
+                        Learn more
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             ))}
           </div>
         </div>
         
         <div>
-          <div className="flex items-center justify-center mb-12">
-            <div className="h-px bg-purple-200 w-16"></div>
-            <h3 className="text-2xl font-bold text-center text-gray-800 mx-4 px-6 py-2 bg-white/70 backdrop-blur-sm rounded-full shadow-sm">
+          <div className="text-center mb-12">
+            <div className="w-full pt-10 border-t border-purple-300/50 mb-8"></div>
+            <span className="px-4 py-1.5 bg-purple-100 text-purple-700 text-xs font-semibold tracking-wider rounded-full mb-4 inline-block">
+              EQUIPMENT & TECHNOLOGY
+            </span>
+            <h3 className="text-2xl md:text-3xl font-bold mb-4">
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-violet-600">
                 FACILITIES & CAPABILITIES
               </span>
             </h3>
-            <div className="h-px bg-purple-200 w-16"></div>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Our advanced facilities and specialized equipment enable us to deliver exceptional precision and quality across all projects.
+            </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {services.slice(4, 6).map((service) => (
-              <ServiceCard 
+          
+          {/* Facilities & Capabilities cards with horizontal layout */}
+          <div className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {[...services.slice(4, 6), ...services.slice(13, 15)].map((service) => (
+                <div 
                 key={service.id}
-                service={service}
-                onClick={handleServiceClick}
-              />
-            ))}
-            {services.slice(13).map((service) => (
-              <ServiceCard 
-                key={service.id}
-                service={service}
-                onClick={handleServiceClick}
-              />
-            ))}
+                  className="bg-white rounded-xl overflow-hidden shadow-lg border border-purple-50 hover:shadow-xl transition-all duration-300 group"
+                  onClick={() => handleServiceClick(service)}
+                >
+                  <div className="flex flex-col md:flex-row h-full">
+                    {/* Left side - Icon */}
+                    <div className="md:w-1/3 bg-gradient-to-br from-purple-500 to-violet-600 p-6 flex items-center justify-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d={service.icon} />
+                      </svg>
+                    </div>
+                    
+                    {/* Right side - Content */}
+                    <div className="md:w-2/3 p-6 flex flex-col">
+                      <h3 className="text-xl font-bold mb-3 text-gray-800 group-hover:text-purple-700 transition-colors duration-300">
+                        {service.title}
+                      </h3>
+                      <p className="text-gray-600 text-sm mb-4 flex-grow">
+                        {service.description}
+                      </p>
+                      <div className="flex justify-end">
+                        <button className="text-purple-600 text-sm font-medium flex items-center group-hover:translate-x-1 transition-transform duration-300">
+                          View details
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

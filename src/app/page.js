@@ -10,6 +10,7 @@ const ClientHero = dynamic(() => import('../components/client/ClientHero'), { ss
 // Import regular components
 import Services from '../components/Services';
 import About from '../components/About';
+import Testimonials from '../components/Testimonials';
 import VideoSection from '../components/VideoSection';
 import Contact from '../components/Contact';
 import Footer from '../components/Footer';
@@ -22,6 +23,7 @@ export default function Home() {
         <ClientHero />
         <Services />
         <About />
+        <Testimonials />
         <VideoSection />
         <Contact />
       </main>
