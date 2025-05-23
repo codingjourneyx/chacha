@@ -6,7 +6,6 @@ import { useEffect, useState } from 'react';
 import { isBrowser } from '../utils/clientUtils';
 
 const Hero = () => {
-  // Add a scroll handler function
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
@@ -17,9 +16,7 @@ const Hero = () => {
     }
   };
   
-  // Function to scroll to services section and trigger popup
   const scrollToServiceAndShowPopup = (serviceId) => {
-    // First scroll to services section
     const servicesSection = document.getElementById('services');
     if (servicesSection) {
       servicesSection.scrollIntoView({
@@ -27,42 +24,34 @@ const Hero = () => {
         block: 'start',
       });
       
-      // After scrolling, dispatch custom event to open the popup
       setTimeout(() => {
         const event = new CustomEvent('openServicePopup', { 
           detail: { serviceId } 
         });
         document.dispatchEvent(event);
-      }, 800); // Delay to allow scroll to complete
+      }, 800);
     }
   };
 
-  // State to track if screen width is in the custom range
   const [isCustomWidthRange, setIsCustomWidthRange] = useState(false);
 
   useEffect(() => {
     const checkScreenSize = () => {
       if (!isBrowser()) return;
-      
       const width = window.innerWidth;
       setIsCustomWidthRange(width >= 1152 && width <= 1250);
     };
     
-    // Check on initial render
     checkScreenSize();
     
-    // Add event listener for window resize
     if (isBrowser()) {
       window.addEventListener('resize', checkScreenSize);
-      
-      // Cleanup
       return () => window.removeEventListener('resize', checkScreenSize);
     }
   }, []);
 
   return (
-    <section id="home" className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-950 via-purple-950 to-black text-white pt-16 pb-8 sm:py-0">
-      {/* Background decoration with improved effects */}
+    <section id="home" className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-950 via-purple-950 to-black text-white pt-20 pb-12 sm:py-0">
       <div className="absolute inset-0 z-0">
         <div className="absolute top-0 left-0 w-full h-full bg-[url('/grid-pattern.svg')] opacity-5"></div>
         <div className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-purple-400 via-purple-600 to-purple-400"></div>
@@ -70,7 +59,6 @@ const Hero = () => {
         <div className="absolute -bottom-32 -left-32 w-[25rem] h-[25rem] rounded-full bg-purple-600/30 blur-[100px] hidden sm:block"></div>
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[20rem] sm:w-[40rem] h-[20rem] sm:h-[40rem] rounded-full bg-purple-600/10 blur-[120px]"></div>
         
-        {/* Enhanced animated floating elements - hide smallest ones on mobile */}
         <motion.div 
           animate={{ 
             y: [0, 15, 0],
@@ -111,15 +99,15 @@ const Hero = () => {
         />
       </div>
       
-      <div className={`w-full max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8 md:py-12 relative z-10 ${isCustomWidthRange ? '!px-8' : ''}`}>
-        <div className="flex flex-col items-center sm:items-start text-center sm:text-left max-w-4xl mx-auto sm:mx-0 sm:ml-0 md:ml-8 lg:ml-16">
+      <div className={`w-full max-w-[1920px] mx-auto px-6 sm:px-6 lg:px-8 py-6 sm:py-8 md:py-12 relative z-10 ${isCustomWidthRange ? '!px-8' : ''}`}>
+        <div className="flex flex-col items-start text-left max-w-4xl mx-0 ml-0 md:ml-8 lg:ml-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
-            className="mb-2 sm:mb-3"
+            className="mb-3"
           >
-            <span className="inline-block px-3 py-1 bg-gradient-to-r from-purple-700/20 via-purple-600/30 to-purple-700/20 text-purple-200 text-[9px] sm:text-[10px] font-semibold tracking-wider rounded-full mb-3 sm:mb-4 backdrop-blur-sm border border-purple-500/20">
+            <span className="inline-block px-4 py-1.5 bg-gradient-to-r from-purple-700/20 via-purple-600/30 to-purple-700/20 text-purple-200 text-[10px] font-semibold tracking-wider rounded-full mb-4 backdrop-blur-sm border border-purple-500/20">
               INNOVATIVE TECHNOLOGY SOLUTIONS
             </span>
           </motion.div>
@@ -128,7 +116,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white via-purple-200 to-white"
+            className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white via-purple-200 to-white"
           >
             ALHAMD TECHNOLOGIES
           </motion.h1>
@@ -137,7 +125,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.4 }}
-            className="text-xs sm:text-sm mb-5 sm:mb-6 md:mb-8 max-w-2xl text-purple-100 font-light leading-relaxed px-2 sm:px-0"
+            className="text-sm mb-7 max-w-2xl text-purple-100 font-light leading-relaxed"
           >
             Experience the difference with Alhamd Technologies – where excellence is not just a goal, but a guarantee. We deliver cutting-edge solutions tailored to transform your business in today's digital landscape.
           </motion.p>
@@ -146,13 +134,13 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.6 }}
-            className="flex flex-col sm:flex-row gap-2 sm:gap-3 mb-6 sm:mb-8 w-full justify-center sm:justify-start"
+            className="flex flex-col sm:flex-row gap-4 sm:gap-3 mb-8 w-full"
           >
             <Link href="#services" className="w-full sm:w-auto">
               <motion.button 
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.98 }}
-                className="px-5 py-2.5 sm:py-2 text-xs bg-gradient-to-r from-purple-600 to-purple-800 rounded-full text-white font-medium shadow-md shadow-purple-500/30 hover:shadow-purple-500/50 transition-all duration-300 w-full"
+                className="w-full sm:w-auto p-3 sm:px-6 sm:py-2 text-sm bg-gradient-to-r from-purple-600 to-purple-800 rounded sm:rounded-full text-white font-medium shadow-md shadow-purple-500/30 hover:shadow-purple-500/50 transition-all duration-300"
               >
                 Explore Our Services
               </motion.button>
@@ -161,7 +149,7 @@ const Hero = () => {
               <motion.button 
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.98 }}
-                className="px-5 py-2.5 sm:py-2 text-xs bg-transparent border border-purple-500/30 hover:border-purple-500/80 rounded-full text-purple-200 font-medium backdrop-blur-sm hover:bg-purple-600/10 transition-all duration-300 w-full"
+                className="w-full sm:w-auto p-3 sm:px-6 sm:py-2 text-sm bg-transparent border border-purple-500/30 hover:border-purple-500/80 rounded sm:rounded-full text-purple-200 font-medium backdrop-blur-sm hover:bg-purple-600/10 transition-all duration-300"
               >
                 Contact Us
               </motion.button>
@@ -172,7 +160,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.5 }}
-            className="grid grid-cols-4 sm:grid-cols-2 md:grid-cols-4 gap-2 sm:gap-3 md:gap-4 mb-5 sm:mb-6 md:mb-8 w-full max-w-2xl"
+            className="grid grid-cols-4 gap-4 mb-8 w-full max-w-2xl"
           >
             {[
               { value: '10+', label: 'Years Experience' },
@@ -182,14 +170,14 @@ const Hero = () => {
             ].map((stat, index) => (
               <motion.div 
                 key={index} 
-                className="flex flex-col items-center bg-purple-900/30 backdrop-blur-md rounded-lg p-1.5 sm:p-2 md:p-3 border border-purple-500/20 hover:border-purple-500/50 transition-all duration-300 hover:bg-purple-700/40"
+                className="flex flex-col items-start sm:items-center bg-purple-900/30 backdrop-blur-md rounded-lg p-3 border border-purple-500/20 hover:border-purple-500/50 transition-all duration-300 hover:bg-purple-700/40"
                 whileHover={{ 
                   y: -3,
                   transition: { duration: 0.2 }
                 }}
               >
-                <span className="text-lg sm:text-xl md:text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-300 to-purple-400 mb-0.5">{stat.value}</span>
-                <span className="text-[8px] sm:text-[9px] md:text-[10px] text-purple-300">{stat.label}</span>
+                <span className="text-sm sm:text-xl md:text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-300 to-purple-400 mb-1">{stat.value}</span>
+                <span className="text-[9px] sm:text-[9px] md:text-[10px] text-purple-300">{stat.label}</span>
               </motion.div>
             ))}
           </motion.div>
@@ -198,14 +186,15 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.8 }}
-            className="w-full"
+            className="w-full mb-4"
           >
-            <div className="flex justify-center sm:justify-start gap-1.5 sm:gap-2 flex-wrap">
+            <div className="flex justify-start gap-2 sm:gap-2 flex-wrap">
               {[
                 { name: "Milling Work", id: 1 },
+                { name: "Fabrication & Welding", id: 4 },
+
                 { name: "Lathe Work", id: 2 },
                 { name: "CNC Work", id: 3 },
-                { name: "Fabrication & Welding", id: 4 },
                 { name: "Band Saw Machine", id: 5 },
                 { name: "Drilling & Tapping", id: 6 }
               ].map((service, index) => (
@@ -214,7 +203,7 @@ const Hero = () => {
                   onClick={() => scrollToServiceAndShowPopup(service.id)}
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.98 }}
-                  className="text-purple-200 text-[8px] sm:text-[9px] md:text-[10px] font-medium tracking-wide bg-purple-900/30 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full hover:bg-purple-700/40 transition-colors cursor-pointer border border-purple-500/20 hover:border-purple-500/50 backdrop-blur-sm mb-1.5"
+                  className="text-purple-200 text-[10px] sm:text-[9px] md:text-[10px] font-medium tracking-wide bg-purple-900/30 px-3 sm:px-3 py-1.5 sm:py-1.5 rounded-full hover:bg-purple-700/40 transition-colors cursor-pointer border border-purple-500/20 hover:border-purple-500/50 backdrop-blur-sm mb-2"
                 >
                   {service.name}
                 </motion.button>

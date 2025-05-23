@@ -70,18 +70,20 @@ export default function Footer() {
               Where excellence is not just a goal, but a guarantee. We deliver innovative solutions tailored to your business needs.
             </p>
             
-            <div className="flex space-x-3 pt-4">
-              {/* Social Icons with modern styling */}
-              <a href="https://www.youtube.com/@TheAlhamdTechnologies" target="_blank" rel="noopener noreferrer" className="group">
-                <div className="w-10 h-10 rounded-lg bg-purple-900/30 hover:bg-purple-600 flex items-center justify-center backdrop-blur-sm border border-purple-500/10 transition-all duration-300 group-hover:scale-110">
-                  <svg className="w-5 h-5 text-purple-300 group-hover:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
-                  </svg>
-                </div>
+            <div className="w-full pt-4">
+              <a 
+                href="https://www.youtube.com/@TheAlhamdTechnologies" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="inline-flex items-center justify-center w-full px-4 py-2 bg-gradient-to-r from-purple-600 to-purple-800 text-white text-sm font-medium rounded-lg shadow-lg shadow-purple-500/30 hover:shadow-purple-500/50 transition-all duration-300 hover:scale-105"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
+                </svg>
+                Visit our YouTube Channel
               </a>
             </div>
           </div>
-          
           {/* Column 2: Get in Touch */}
           <div className="md:col-span-3 space-y-5">
             <h3 className="text-base font-semibold relative inline-block mb-4">
