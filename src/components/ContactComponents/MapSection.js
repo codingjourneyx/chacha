@@ -7,7 +7,7 @@ export default function MapSection() {
       <div className="bg-white p-4 rounded-xl shadow-lg overflow-hidden flex-grow">
         <div className="aspect-video w-full h-full rounded-lg overflow-hidden">
           <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.5650956267704!2d73.0089765!3d19.1388459!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7bf65e6e43375%3A0x55b432b3d64b682e!2s42Q5%2B2H9%2C%20C%20V%20Raman%20Road%2C%20BS%20Ambedkar%20Nagar%2C%20Anushakti%20Nagar%2C%20MIDC%20Area%20Rd%2C%20Mumbai%2C%20Maharashtra%20400094%2C%20India!5e0!3m2!1sen-GB!2sin!4v1715844239196!5m2!1sen-GB!2sin" 
+            src="https://www.google.com/maps/place/Alhamd+Technologies/@19.1463319,73.0080576,17z/data=!3m1!4b1!4m6!3m5!1s0x3be7bfb90f07b83d:0xcbb920ab0abea5f6!8m2!3d19.1463319!4d73.0080576!16s%2Fg%2F11vdfb36fz?entry=ttu&g_ep=EgoyMDI1MDUxNS4xIKXMDSoASAFQAw%3D%3D" 
             width="100%" 
             height="100%" 
             style={{ border: 0 }} 

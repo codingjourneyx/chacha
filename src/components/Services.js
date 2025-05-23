@@ -222,20 +222,6 @@ function ServiceCard({ service, onClick }) {
 export default function Services() {
   const [selectedService, setSelectedService] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isCustomWidthRange, setIsCustomWidthRange] = useState(false);
-  
-  useEffect(() => {
-    const checkScreenSize = () => {
-      const width = window.innerWidth;
-      setIsCustomWidthRange(width >= 1152 && width <= 1250);
-    };
-    
-    checkScreenSize();
-    
-    window.addEventListener('resize', checkScreenSize);
-    
-    return () => window.removeEventListener('resize', checkScreenSize);
-  }, []);
   
   const handleServiceClick = (service) => {
     setSelectedService(service);
@@ -255,7 +241,7 @@ export default function Services() {
       <div className="absolute -bottom-32 -left-32 w-80 h-80 rounded-full bg-violet-100/40 blur-3xl"></div>
       <div className="absolute top-1/4 left-1/2 w-64 h-64 rounded-full bg-blue-100/30 blur-3xl"></div>
       
-      <div className={`w-full max-w-[1920px] mx-auto px-4 md:px-6 lg:px-8 py-8 md:py-12 relative z-10 ${isCustomWidthRange ? '!px-8' : ''}`}>
+      <div className="container mx-auto px-4 md:px-6 max-w-8xl relative z-10">
         <div className="flex flex-col lg:flex-row gap-12 mb-24">
           {/* Left side - Introduction */}
           <div className="lg:w-2/5 lg:sticky lg:top-24 lg:self-top mt-7">
